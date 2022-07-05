@@ -16,7 +16,7 @@
     <img src="moody-logo.png" height="60" alt="Moody Kittens">
     <form class="" onsubmit="addKitten(event)">
       <div class="d-flex">
-        <input placeholder="Name" type="text" name="name" />
+        <input placeholder="Desired Kitten's Name" type="text" name="name" />
         <button class="btn-special" type="submit">
           /ᐠ｡ꞈ｡ᐟ\
         </button>
@@ -24,20 +24,51 @@
     </form>
   </header>
   <main class="container">
-    <div id="welcome" class="d-flex justify-content-center">
+    <!-- NOTE ADDED HIDDEN TO THIS DIV -->
+    <div id="welcome" class="d-flex justify-content-center hidden" >
       <div class="card p-2 text-center w-50">
         <img src="moody-logo.png" height="250" alt="Moody Kittens">
         <div class="mt-2">
-          <b class="text-center">Hello Student</b>
-          <p>This is your starter template only feel free to modify the look as you tackle the challenges that we have laid out.</p>
+          <b class="text-center">Tung's Version of Moody Kittens Challenge!</b>
+          <p>Choose a desired name for your Kitten. it begins with an affection level of 5 the goal is to feed or give catnip and maintain that affection for as long as you can. if it reaches level 0 affection your cat will run away.</p>
           <small>Good Luck and Have Fun!</small>
           <br>
           <button onclick="getStarted()">Get Started</button>
         </div>
       </div>
     </div>
+    <!-- NOTE NO CLOSING BRACKET ON THIS DIV -->
     <div class="p-2">
-      <div id="kittens" class="d-flex align-items-center flex-wrap">
+      <!-- NOTE ADD HAPPY/TOLERANT/ANGRY/GONE TO THIS DIV CLASS TO AFFECT IMG -->
+      <div id="kittens" class=" kittyBox  ">
+        <span id="grumpyCat" class="grumpy">
+          <img  src="/pngaaa.com-2850009.png" alt="GRUMPY CAT" width="200" height="250">
+        </span>
+<div class="interactButtons dflex align-center flex-wrap ">
+  <button  type="button" class="">catnip</button>
+     
+<button  type="button" class="m-2">Pet </button>
+
+<button type="button"> Feed</button>
+</div>
+
+<div class="kittenStats">
+  <div>
+   <span>Name:</span>
+    <span id="KittenName">Goblin</span>
+  </div>
+  
+  <div>
+    <span>Mood:</span>
+    <span id="KittenMood">Tolerant</span>
+  </div>
+  
+  <div>
+  <span>Affection:</span>
+  <span id="KittenAffection">0</span>
+  </div>
+</div>
+
       </div>
   </main>
   <footer class="card bg-dark text-light p-2 d-flex align-items-center justify-content-center">

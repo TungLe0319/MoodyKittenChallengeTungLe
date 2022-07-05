@@ -1,4 +1,6 @@
-let kittens = []
+let kittens = [];
+let currentKitten = {};
+
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -7,13 +9,28 @@ let kittens = []
  * Then reset the form
  */
 function addKitten(event) {
+  event.preventDefault();
+  let form = event.target;
+  let kittenName = form.name.value;
+  currentKitten = kittens.find((kitten) => kitten.name == kittenName);
+  if (!currentKitten) {
+    currentKitten = { name: kittenName, Mood: "", affection: 5 };
+    kittens.push(currentKitten);
+    saveKittens();
+  }
+
+  drawKittens();
+  form.reset();
+  console.log(currentKitten);
 }
 
 /**
  * Converts the kittens array to a JSON string then
- * Saves the string to localstorage at the key kittens 
+ * Saves the string to localstorage at the key kittens
  */
 function saveKittens() {
+  window.localStorage.setItem("kittens", JSON.stringify(kittens));
+  drawKittens();
 }
 
 /**
@@ -22,34 +39,33 @@ function saveKittens() {
  * the kittens array to the retrieved array
  */
 function loadKittens() {
+  let storedKittens = JSON.parse(window.localStorage.getItem("kittens"));
+  if (storedKittens) {
+    kittens = storedKittens;
+  }
 }
 
 /**
  * Draw all of the kittens to the kittens element
  */
-function drawKittens() {
-}
-
+function drawKittens() {}
 
 /**
  * Find the kitten in the array by its id
- * @param {string} id 
+ * @param {string} id
  * @return {Kitten}
  */
-function findKittenById(id) {
-}
-
+function findKittenById(id) {}
 
 /**
  * Find the kitten in the array of kittens
  * Generate a random Number
- * if the number is greater than .5 
+ * if the number is greater than .5
  * increase the kittens affection
  * otherwise decrease the affection
- * @param {string} id 
+ * @param {string} id
  */
-function pet(id) {
-}
+function pet(id) {}
 
 /**
  * Find the kitten in the array of kittens
@@ -57,32 +73,29 @@ function pet(id) {
  * Set the kitten's affection to 5
  * @param {string} id
  */
-function catnip(id) {
-}
+function catnip(id) {}
 
 /**
  * Sets the kittens mood based on its affection
- * @param {Kitten} kitten 
+ * @param {Kitten} kitten
  */
-function setKittenMood(kitten) {
-}
+function setKittenMood(kitten) {}
 
 /**
  * Removes all of the kittens from the array
  * remember to save this change
  */
-function clearKittens(){
-}
+function clearKittens() {}
 
 /**
- * Removes the welcome content and should probably draw the 
+ * Removes the welcome content and should probably draw the
  * list of kittens to the page. Good Luck
  */
 function getStarted() {
   document.getElementById("welcome").remove();
-  console.log('Good Luck, Take it away')
+  drawKittens();
+  document.getElementById("kittens").classList.remove("hidden");
 }
-
 
 // --------------------------------------------- No Changes below this line are needed
 
@@ -91,14 +104,17 @@ function getStarted() {
  * @typedef {{name: string, mood: string, affection: number}} Kitten
  */
 
-
 /**
  * Used to generate a random string id for mocked
  * database generated Id
  * @returns {string}
  */
 function generateId() {
-  return Math.floor(Math.random() * 10000000) + "-" + Math.floor(Math.random() * 10000000)
+  return (
+    Math.floor(Math.random() * 10000000) +
+    "-" +
+    Math.floor(Math.random() * 10000000)
+  );
 }
 
 loadKittens();
