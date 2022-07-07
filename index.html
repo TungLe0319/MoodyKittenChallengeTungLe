@@ -9,15 +9,16 @@
   <link rel="shortcut icon" href="moody-logo.png" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a2d3ad0e84.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body >
   <header class="bg-dark d-flex align-items-center p-1 space-between">
     <img src="moody-logo.png" height="60" alt="Moody Kittens">
     <form class="" onsubmit="addKitten(event)">
       <div class="d-flex">
-        <input placeholder="Desired Kitten's Name" type="text" name="name" />
-        <button class="btn-special" type="submit">
+        <input placeholder="Desired Kitten's Name" type="text" name="name"  required/>
+        <button id="formButton" class="btn-special" type="submit">
           /ᐠ｡ꞈ｡ᐟ\
         </button>
       </div>
@@ -40,38 +41,12 @@
     <!-- NOTE NO CLOSING BRACKET ON THIS DIV -->
     <div class="p-2">
       <!-- NOTE ADD HAPPY/TOLERANT/ANGRY/GONE TO THIS DIV CLASS TO AFFECT IMG -->
-      <div id="kittens" class=" kittyBox  ">
-        <span id="grumpyCat" class="grumpy">
-          <img  src="/pngaaa.com-2850009.png" alt="GRUMPY CAT" width="200" height="250">
-        </span>
-<div class="interactButtons dflex align-center flex-wrap ">
-  <button  type="button" class="">catnip</button>
-     
-<button  type="button" class="m-2">Pet </button>
-
-<button type="button"> Feed</button>
-</div>
-
-<div class="kittenStats">
-  <div>
-   <span>Name:</span>
-    <span id="KittenName">Goblin</span>
-  </div>
-  
-  <div>
-    <span>Mood:</span>
-    <span id="KittenMood">Tolerant</span>
-  </div>
-  
-  <div>
-  <span>Affection:</span>
-  <span id="KittenAffection">0</span>
-  </div>
-</div>
+      <div id="kittens"   >
+       
 
       </div>
   </main>
-  <footer class="card bg-dark text-light p-2 d-flex align-items-center justify-content-center">
+  <footer class=" text-light p-2 d-flex align-items-center justify-content-center">
     <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks</small>
   </footer>
 

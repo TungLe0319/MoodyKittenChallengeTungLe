@@ -16,7 +16,7 @@
 }
 
 body {
-  background-color: var(--bg);
+  background-image: url(/alleyway123.jpg);
   font-size: 16pt;
   color: var(--text-color);
   margin: 0;
@@ -75,11 +75,13 @@ button {
   color: var(--light);
   border: none;
   border-radius: var(--corners);
-  box-shadow: var(--shadow);
+  box-shadow: 0 0 10 var(--bg);
   text-transform: uppercase;
   transition: all 0.2s ease;
   cursor: pointer;
   padding: 0.5em;
+  border-radius: 5px;
+  border: 2px solid wheat;
 }
 button:focus {
   outline: none;
@@ -117,13 +119,23 @@ button.btn-special:hover {
 }
 /* //////////////////////////////////////////////////////////////////////////////// */
 .interactButtons {
+  width: 350px;
   position: absolute;
-  bottom: 270px;
-  left: 52px;
+  bottom: 170px;
+  left: -25px;
   border-radius: 4px;
   display: inline-block;
 }
-
+.deleteButton {
+  position: absolute;
+  left: 87.5%;
+  top: 69%;
+  background-color: #fa4141;
+}
+.deleteButton:hover {
+  color: var(--danger);
+  background: #e0d9d9;
+}
 .grumpy {
   border: 5px solid white;
   background: var(--dark-lighten);
@@ -135,7 +147,12 @@ button.btn-special:hover {
 }
 
 .kittyBox {
-  background-color: var(--dark);
+  background: rgb(255, 124, 0);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 124, 0, 1) 0%,
+    rgba(2, 0, 4, 1) 100%
+  );
   border: 4px solid var(--primary);
   box-shadow: 10px 10px 20px black;
   border-radius: 4px;
@@ -143,17 +160,23 @@ button.btn-special:hover {
   height: 650px;
   margin: 20px auto;
   position: relative;
+  display: inline-block;
 }
 
 .kittenStats {
+  padding-top: 7px;
   width: 273px;
-  height: 200px;
+  height: 130px;
   padding-left: 4px;
   background-color: transparent;
   position: absolute;
+  border-radius: 4px;
   left: 10px;
   bottom: 10px;
   color: white;
+  border: #abce5c solid 4px;
+  box-shadow: 0px 0px 8px #ffffff;
+  display: inline-block;
 }
 .card {
   background-color: var(--light);
@@ -177,14 +200,13 @@ button.btn-special:hover {
   filter: drop-shadow(2px 4px 6px #646464);
 }
 .kitten.angry img {
-  filter: drop-shadow(2px 4px 6px #ff0000) contrast(1);
+  filter: drop-shadow(2px 4px 10px #ff0000) contrast(1);
 }
 .kitten.gone img {
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(0);
 }
 .kitten.gone {
   color: var(--danger);
-  pointer-events: none;
 }
 
 .bg-dark {
