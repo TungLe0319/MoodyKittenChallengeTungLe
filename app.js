@@ -56,7 +56,9 @@ function loadKittens() {
 
 /**
  * Draw all of the kittens to the kittens element
- */
+//  */
+// NOTE here i am using a good amount of ${} references here. the buttons i need to make sure in template literals to put the Id/type/class/onclick in that order for it to function properly. button onclick is what is setting off the change in the HTML values
+// NOTE Remember when making templates i must use BACKTICK `` not single Quotation marks''
 function drawKittens() {
   loadKittens();
 
