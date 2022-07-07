@@ -176,6 +176,7 @@ function catnip(id) {
 }
 
 // NOTE  TRYING TO SET KITTEN MOOD DEPENDING ON AFFECTION LEVEL, STILL NEED TO DO
+// NOTE WAS ABLE TOP ACCESS THE KITTEN IMAGE CLASS AND ADDING IT BELOW USING .className +=
 /**
 //  * NOTE GOT IT TO WORK HAD TO USE find KittenByID function AND ADD ${kitten.mood} INTO MY TEMPLATE LITERAL
  * Sets the kittens mood based on its affection
