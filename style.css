@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: "Asap", sans-serif;
 }
 :root {
   --primary: #abce5c;
@@ -16,7 +17,7 @@
 }
 
 body {
-  background-image: url(/alleyway123.jpg);
+  background-image: url(/resources/alleyway123.jpg);
   font-size: 16pt;
   color: var(--text-color);
   margin: 0;
@@ -126,10 +127,14 @@ button.btn-special:hover {
   border-radius: 4px;
   display: inline-block;
 }
+.stopGame {
+  pointer-events: none;
+}
 .deleteButton {
+  font-size: 40px;
   position: absolute;
-  left: 87.5%;
-  top: 69%;
+  left: 95%;
+  top: 88%;
   background-color: #fa4141;
 }
 .deleteButton:hover {
@@ -160,7 +165,8 @@ button.btn-special:hover {
   height: 650px;
   margin: 20px auto;
   position: relative;
-  display: inline-block;
+  display: inline block;
+  float: left;
 }
 
 .kittenStats {
@@ -207,6 +213,7 @@ button.btn-special:hover {
 }
 .kitten.gone {
   color: var(--danger);
+  pointer-events: none;
 }
 
 .bg-dark {
@@ -313,6 +320,9 @@ button.btn-special:hover {
 }
 .pb-3 {
   padding-bottom: 1.5em;
+}
+.pl-3 {
+  margin-left: 3em;
 }
 
 .w-50 {

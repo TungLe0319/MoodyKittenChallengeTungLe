@@ -2,7 +2,9 @@ let kittens = [];
 let currentKitten = {};
 let mood = "";
 let affection = 5;
+
 // NOTE persists Kittens through page reload
+loadKittens();
 drawKittens();
 /**
  * Called when submitting the new Kitten Form
@@ -26,6 +28,8 @@ function addKitten(event) {
     };
     kittens.push(currentKitten);
     saveKittens();
+  } else {
+    alert("you already have this cat");
   }
 
   drawKittens();
@@ -66,16 +70,16 @@ function drawKittens() {
   let kittensTemplate = "";
   kittens.forEach((kitten) => {
     kittensTemplate += `
-    <div id="kittens" class=" kittyBox">
+    <div id="kittens" class=" kittyBox pl-3">
         <span id="grumpyCat" class="grumpy">
-          <img  src="/pngaaa.com-2850009.png" alt="GRUMPY CAT" width="200" height="250">
+          <img  src="/resources/pngaaa.com-2850009.png" alt="GRUMPY CAT" width="200" height="250">
         </span>
-<div class="interactButtons dflex align-center flex-wrap ">
-  <button id="catNipButton" type="button" class=""  onclick="catnip('${kitten.id}')" > <img  src="/spray.png" alt="catNip" width="40" height="40">Catnip</button>
+<div id="interactions" class="interactButtons dflex align-center flex-wrap ">
+  <button id="catNipButton" type="button" class=""  onclick="catnip('${kitten.id}')" > <img  src="/resources/spray.png" alt="catNip" width="40" height="50">Catnip</button>
      
-<button  type="button" class="m-2" onclick="pet('${kitten.id}')"> <img  src="/pet.png" alt="PetCat" width="50" height="50">Pet </button>
+<button  id="catPetButton type="button" class="m-2" onclick="pet('${kitten.id}')"> <img  src="/resources/pet.png" alt="PetCat" width="50" height="50">Pet </button>
 
-<button type="button"   onclick="feed('${kitten.id}')" >  <img  src="/cat.png" alt="FEED" width="50" height="50">Feed</button>
+<button id="catFeedButton" type="button"   onclick="feed('${kitten.id}')" >  <img  src="/resources/cat.png" alt="FEED" width="50" height="50">Feed</button>
 </div>
 
 <div class="kittenStats  display: inline-block;">
@@ -84,7 +88,7 @@ function drawKittens() {
     <span id="kitten-name">${kitten.name}</span>
   </div>
   
-  <div id="kittenMoody">
+  <div id="kittenMoody" class="mt-1 mb-1">
     <span>Mood:</span>
     <span id="kittenMood" >${kitten.mood}</span>
   </div>
@@ -92,12 +96,13 @@ function drawKittens() {
   <div>
   <span>Affection:</span>
   <span id="kittenAffection">${kitten.affection}</span>
-  <button class="deleteButton" type="button"onclick="clearKittens('${kitten.id}')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
-</div>
   </div>
-</div>
-
-      </div>
+  </div>
+  </div>
+  
+  </div>
+  
+  
       
       `;
   });
@@ -129,7 +134,7 @@ function pet(id) {
 
     saveKittens();
   } else {
-    currentKitten.affection--;
+    currentKitten.affection++;
     saveKittens();
   }
   setKittenMood(currentKitten);
@@ -150,7 +155,6 @@ function feed(id) {
   }
   setKittenMood(currentKitten);
   console.log("current Affection", currentKitten.affection);
-  console.log(rNum);
 }
 
 /**
@@ -168,14 +172,15 @@ function catnip(id) {
   let rNum = Math.random();
 
   if (rNum > 0.5) {
-    currentKitten.affection += 5;
+    currentKitten.affection += 3;
     saveKittens();
   } else {
-    currentKitten.affection += 0;
+    currentKitten.affection -= 3;
+    saveKittens();
   }
+  setKittenMood(currentKitten);
 }
 
-// NOTE  TRYING TO SET KITTEN MOOD DEPENDING ON AFFECTION LEVEL, STILL NEED TO DO
 /**
 //  * NOTE GOT IT TO WORK HAD TO USE find KittenByID function AND ADD ${kitten.mood} INTO MY TEMPLATE LITERAL
  * Sets the kittens mood based on its affection
@@ -184,6 +189,7 @@ function catnip(id) {
  */
 function setKittenMood(kitten) {
   let currentKitten = findKittenById(kitten);
+
   if (currentKitten.affection >= 10) {
     currentKitten.mood = "Happy";
     document.getElementById("kittens").className += "kitten happy";
@@ -201,11 +207,9 @@ function setKittenMood(kitten) {
   }
   if (currentKitten.affection <= 0) {
     console.log("gone");
-    document.getElementById("kittens").className += "kitten gone";
-    currentKitten.mood = "Gone";
-    alert(
-      "you scared him away forever! remove current kitten! and begin another!"
-    );
+    document.getElementById("kittens").className += "kitten gone ";
+    currentKitten.mood = "grumpyCat";
+    alert("you scared him away! remove current kitten! and begin another!");
   }
 
   saveKittens();
@@ -221,9 +225,6 @@ function clearKittens(id) {
   if (result) {
   }
 
-  if (kittenIndex == -1) {
-    throw new Error("Invalid Kitten ID");
-  }
   kittens.splice(kittenIndex, 1);
   saveKittens();
 }
@@ -237,6 +238,14 @@ function getStarted() {
   document.getElementById("welcome").remove();
   drawKittens();
   document.getElementById("kittens").classList.remove("hidden");
+}
+
+function stopGame(kitten) {
+  // let kittenElement = document.getElementById("interactions");
+  // let currentKitten = findKittenById(kitten);
+  // if (currentKitten.affection <= 0) {
+  //   kittenElement.className += "stopGame";
+  // }
 }
 
 // --------------------------------------------- No Changes below this line are needed
