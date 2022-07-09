@@ -33,6 +33,7 @@ function addKitten(event) {
   }
 
   drawKittens();
+  setKittenMood(currentKitten);
   form.reset();
   console.log(currentKitten);
 }
@@ -129,12 +130,16 @@ function findKittenById(id) {
 function pet(id) {
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
+  if (currentKitten.affection >= 11) {
+    return; //NOTE stops the function when condition is met.
+  }
+
   if (rNum > 0.5) {
     currentKitten.affection++;
 
     saveKittens();
   } else {
-    currentKitten.affection++;
+    currentKitten.affection--;
     saveKittens();
   }
   setKittenMood(currentKitten);
@@ -145,6 +150,10 @@ function pet(id) {
 function feed(id) {
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
+  if (currentKitten.affection >= 10) {
+    return;
+  }
+
   if (rNum > 0.5) {
     currentKitten.affection--;
 
@@ -158,9 +167,7 @@ function feed(id) {
 }
 
 /**
-//  * TODO MAKE CAPNIP TURN OFF AFTER it's LESS THAN 4 
-TODO STILL NEED TO MAKE GAME END AT 10
-TODO DISABLE BUTTONS ONCE CAT IS GONE
+
  * Find the kitten in the array of kittens
  * Set the kitten's mood to tolerant
  * Set the kitten's affection to 5
@@ -170,6 +177,9 @@ function catnip(id) {
   let currentKitten = findKittenById(id);
 
   let rNum = Math.random();
+  if (currentKitten.affection >= 10) {
+    return;
+  }
 
   if (rNum > 0.5) {
     currentKitten.affection += 3;
@@ -193,25 +203,25 @@ function setKittenMood(kitten) {
   let currentKitten = findKittenById(kitten);
 
   if (currentKitten.affection >= 10) {
-    currentKitten.mood = "Happy";
     document.getElementById("kittens").className += "kitten happy";
+    currentKitten.mood = "Happy";
     console.log("happy");
   }
   if (currentKitten.affection <= 5) {
-    console.log("tolerant");
     document.getElementById("kittens").className += "kitten tolerant";
     currentKitten.mood = "Tolerant";
+    console.log("tolerant");
   }
   if (currentKitten.affection <= 3) {
-    console.log("angry");
     document.getElementById("kittens").className += "kitten angry";
     currentKitten.mood = "Angry";
+    console.log("angry");
   }
   if (currentKitten.affection <= 0) {
-    console.log("gone");
     document.getElementById("kittens").className += "kitten gone ";
     currentKitten.mood = "grumpyCat";
     alert("you scared him away! remove current kitten! and begin another!");
+    console.log("gone");
   }
 
   saveKittens();
@@ -229,6 +239,7 @@ function clearKittens(id) {
 
   kittens.splice(kittenIndex, 1);
   saveKittens();
+  window.location.reload(); //NOTE reloads page so when a new kitten is added it doesn't begin as "GONE"
 }
 
 // TODO WANT THE GAME TO END ONCE AFFECTION HITS 10 or 0 MAKING THE CAT HAPPY OR ANGRY if ANGRY THEN GONE IF HAPPY THEN BLUE GLOW AND KITTEN MEOW
@@ -240,14 +251,6 @@ function getStarted() {
   document.getElementById("welcome").remove();
   drawKittens();
   document.getElementById("kittens").classList.remove("hidden");
-}
-
-function stopGame(kitten) {
-  // let kittenElement = document.getElementById("interactions");
-  // let currentKitten = findKittenById(kitten);
-  // if (currentKitten.affection <= 0) {
-  //   kittenElement.className += "stopGame";
-  // }
 }
 
 // --------------------------------------------- No Changes below this line are needed
