@@ -18,7 +18,7 @@
 
 body {
   background-image: url(/resources/alleyway123.jpg);
-  background-size: 100%;
+  background-size: contain;
   font-size: 16pt;
   color: var(--text-color);
   margin: 0;
@@ -132,11 +132,12 @@ button.btn-special:hover {
   pointer-events: none;
 }
 .deleteButton {
-  font-size: 40px;
+  font-size: 20px;
   position: absolute;
-  left: 95%;
-  top: 88%;
+  left: 80%;
+  top: 90%;
   background-color: #fa4141;
+  pointer-events: all;
 }
 .deleteButton:hover {
   color: var(--danger);
@@ -166,9 +167,7 @@ button.btn-special:hover {
   height: 650px;
   margin: 20px auto;
   position: relative;
-  display: inline block;
-  float: left;
-  left: 40%;
+  display: inline-block;
 }
 
 .kittenStats {

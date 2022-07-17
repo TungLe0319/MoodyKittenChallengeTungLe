@@ -6,6 +6,7 @@ let affection = 5;
 // NOTE persists Kittens through page reload
 loadKittens();
 drawKittens();
+setKittenMood(currentKitten);
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -14,7 +15,7 @@ drawKittens();
  * Then reset the form
  */
 function addKitten(event) {
-  event.preventDefault();
+  event.preventDefault(); //NOTE stops page reload on kitten name submission
   let form = event.target;
 
   let kittenName = form.name.value;
@@ -33,7 +34,7 @@ function addKitten(event) {
   }
   document.getElementById("welcome").className += "hidden";
   drawKittens();
-  setKittenMood(currentKitten);
+  setKittenMood(currentKitten); //NOTE here it stops the mood crossing over onto new kittens made.
   form.reset();
   console.log(currentKitten);
 }
@@ -101,11 +102,12 @@ function drawKittens() {
   </div>
 
   </div>
-  
+  <button class="deleteButton d-flex align-items-center justify-content-center" type="button"onclick="clearKittens('${kitten.id}')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
   </div>
   
   </div>
   
+
   
       
       `;
@@ -118,6 +120,7 @@ function drawKittens() {
  * @param {string} id
  * @return {Kitten}
  */
+// NOTE returns the value of the array which is kittens, the function name is kitten and matching the kitten.id
 function findKittenById(id) {
   return kittens.find((kitten) => (kitten.id = id));
 }
@@ -133,12 +136,15 @@ function findKittenById(id) {
 function pet(id) {
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
-  if (currentKitten.affection >= 11) {
+  if (currentKitten.affection >= 10) {
+    if (rNum > 0.5) {
+      currentKitten.affection--;
+    }
     return; //NOTE stops the function when condition is met.
   }
 
   if (rNum > 0.5) {
-    currentKitten.affection++;
+    currentKitten.affection--;
 
     saveKittens();
   } else {
@@ -154,7 +160,10 @@ function feed(id) {
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
   if (currentKitten.affection >= 10) {
-    return;
+    if (rNum > 0.5) {
+      currentKitten.affection--;
+    }
+    return; //NOTE stops the function when condition is met.
   }
 
   if (rNum > 0.5) {
@@ -162,7 +171,7 @@ function feed(id) {
 
     saveKittens();
   } else {
-    currentKitten.affection--;
+    currentKitten.affection++;
     saveKittens();
   }
   setKittenMood(currentKitten);
@@ -229,7 +238,7 @@ function setKittenMood(kitten) {
  */
 function clearKittens(id) {
   let kittenIndex = kittens.findIndex((kitten) => kitten.id == id);
-  var result = confirm("Are you sure you want to lose this kitten?");
+  var result = confirm("FareTheeWell Sir Kitten");
   if (result) {
   }
 
@@ -245,8 +254,8 @@ function clearKittens(id) {
  */
 function getStarted() {
   document.getElementById("welcome").remove();
+  loadKittens();
   drawKittens();
-  document.getElementById("kittens").classList.remove("hidden");
 }
 
 // --------------------------------------------- No Changes below this line are needed

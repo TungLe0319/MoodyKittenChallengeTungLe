@@ -32,7 +32,7 @@
   </header>
   <main class="container">
     <!-- NOTE ADDED HIDDEN TO THIS DIV -->
-    <div id="welcome" class="d-flex justify-content-center " >
+    <div id="welcome" class="d-flex justify-content-center hidden " >
       <div class="card p-2 text-center w-50">
         <img src="\resources\moody-logo.png" height="250" alt="Moody Kittens">
         <div class="mt-2">
@@ -51,10 +51,10 @@
        
 
       </div>
-      <button class="deleteButton d-flex align-items-center justify-content-center" type="button"onclick="clearKittens('${kitten.id}')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+  
     
   </main>
-  <footer class=" text-light p-2 d-flex align-items-center justify-content-center">
+  <footer class="card bg-dark text-light p-2 d-flex align-items-center justify-content-center">
     <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks</small>
   </footer>
 
