@@ -17,24 +17,27 @@
 
 <body >
   <header class="bg-dark d-flex align-items-center p-1 space-between">
+    
     <img src="\resources\moody-logo.png" height="60" alt="Moody Kittens">
+    
     <form class="" onsubmit="addKitten(event)">
       <div class="d-flex">
         <input placeholder="Desired Kitten's Name" type="text" name="name"  required/>
         <button id="formButton" class="btn-special" type="submit">
           /ᐠ｡ꞈ｡ᐟ\
         </button>
+        
       </div>
     </form>
   </header>
   <main class="container">
     <!-- NOTE ADDED HIDDEN TO THIS DIV -->
-    <div id="welcome" class="d-flex justify-content-center hidden" >
+    <div id="welcome" class="d-flex justify-content-center " >
       <div class="card p-2 text-center w-50">
         <img src="\resources\moody-logo.png" height="250" alt="Moody Kittens">
         <div class="mt-2">
           <b class="text-center">Tung's Version of Moody Kittens Challenge!</b>
-          <p>Choose a desired name for your Kitten. it begins with an affection level of 5 the goal is to feed or give catnip and maintain that affection for as long as you can. if it reaches level 0 affection your cat will run away.</p>
+          <p>Choose a desired name for your Kitten. See if you can manage to make the cat happy, be careful though theres a chance of the cat running away!</p>
           <small>Good Luck and Have Fun!</small>
           <br>
           <button onclick="getStarted()">Get Started</button>
@@ -48,7 +51,8 @@
        
 
       </div>
-      <button class="deleteButton" type="button"onclick="clearKittens('${kitten.id}')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+      <button class="deleteButton d-flex align-items-center justify-content-center" type="button"onclick="clearKittens('${kitten.id}')"> <i class="fa fa-trash" aria-hidden="true"></i></button>
+    
   </main>
   <footer class=" text-light p-2 d-flex align-items-center justify-content-center">
     <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks</small>

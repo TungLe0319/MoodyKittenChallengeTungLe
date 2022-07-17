@@ -124,7 +124,7 @@ button.btn-special:hover {
   width: 350px;
   position: absolute;
   bottom: 170px;
-  left: -25px;
+  left: -15px;
   border-radius: 4px;
   display: inline-block;
 }
@@ -168,6 +168,7 @@ button.btn-special:hover {
   position: relative;
   display: inline block;
   float: left;
+  left: 40%;
 }
 
 .kittenStats {

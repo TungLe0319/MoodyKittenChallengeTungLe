@@ -31,7 +31,7 @@ function addKitten(event) {
   } else {
     alert("you already have this cat");
   }
-
+  document.getElementById("welcome").className += "hidden";
   drawKittens();
   setKittenMood(currentKitten);
   form.reset();
@@ -75,7 +75,8 @@ function drawKittens() {
         <span id="grumpyCat" class="grumpy">
           <img  src="/resources/pngaaa.com-2850009.png" alt="GRUMPY CAT" width="200" height="250">
         </span>
-<div id="interactions" class="interactButtons dflex align-center flex-wrap ">
+<div id="interactions" class="interactButtons d-flex align-center flex-wrap ">
+
   <button id="catNipButton" type="button" class=""  onclick="catnip('${kitten.id}')" > <img  src="/resources/spray.png" alt="catNip" width="40" height="50">Catnip</button>
      
 <button  id="catPetButton type="button" class="m-2" onclick="pet('${kitten.id}')"> <img  src="/resources/pet.png" alt="PetCat" width="50" height="50">Pet </button>
@@ -85,20 +86,22 @@ function drawKittens() {
 
 <div class="kittenStats  display: inline-block;">
   <div>
-   <span>Name:</span>
+   <span>Name :</span>
     <span id="kitten-name">${kitten.name}</span>
   </div>
   
   <div id="kittenMoody" class="mt-1 mb-1">
-    <span>Mood:</span>
+    <span>Mood :</span>
     <span id="kittenMood" >${kitten.mood}</span>
   </div>
   
   <div>
-  <span>Affection:</span>
+  <span>Affection :</span>
   <span id="kittenAffection">${kitten.affection}</span>
   </div>
+
   </div>
+  
   </div>
   
   </div>
@@ -155,7 +158,7 @@ function feed(id) {
   }
 
   if (rNum > 0.5) {
-    currentKitten.affection--;
+    currentKitten.affection++;
 
     saveKittens();
   } else {
@@ -176,18 +179,10 @@ function feed(id) {
 function catnip(id) {
   let currentKitten = findKittenById(id);
 
-  let rNum = Math.random();
-  if (currentKitten.affection >= 10) {
-    return;
-  }
+  currentKitten.mood = "Tolerant";
+  currentKitten.affection = 5;
 
-  if (rNum > 0.5) {
-    currentKitten.affection += 3;
-    saveKittens();
-  } else {
-    currentKitten.affection -= 3;
-    saveKittens();
-  }
+  saveKittens();
   setKittenMood(currentKitten);
 }
 
@@ -214,6 +209,7 @@ function setKittenMood(kitten) {
   }
   if (currentKitten.affection <= 3) {
     document.getElementById("kittens").className += "kitten angry";
+
     currentKitten.mood = "Angry";
     console.log("angry");
   }
