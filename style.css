@@ -233,6 +233,13 @@ button.btn-special:hover {
   border-color: var(--dark-lighten);
 }
 
+
+.btn-interact:hover{
+  background-color:#f87901;
+  color: var(--primary-lighten);
+  transition: all 0.3s linear;
+}
+
 .btn-cancel {
   background-color: red;
   border-color: lightcoral;

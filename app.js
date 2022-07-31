@@ -72,17 +72,17 @@ function drawKittens() {
   let kittensTemplate = "";
   kittens.forEach((kitten) => {
     kittensTemplate += `
-    <div id="kittens" class=" kittyBox pl-3">
+    <div id="kitten" class=" kittyBox   pl-3">
         <span id="grumpyCat" class="grumpy">
           <img  src="/resources/pngaaa.com-2850009.png" alt="GRUMPY CAT" width="200" height="250">
         </span>
 <div id="interactions" class="interactButtons d-flex align-center flex-wrap ">
 
-  <button id="catNipButton" type="button" class=""  onclick="catnip('${kitten.id}')" > <img  src="/resources/spray.png" alt="catNip" width="40" height="50">Catnip</button>
+  <button id="catNipButton" type="button" class="btn-interact"  onclick="catnip('${kitten.id}')" > <img  src="/resources/spray.png" alt="catNip" width="40" height="50">Catnip</button>
      
-<button  id="catPetButton type="button" class="m-2" onclick="pet('${kitten.id}')"> <img  src="/resources/pet.png" alt="PetCat" width="50" height="50">Pet </button>
+<button  id="catPetButton type="button" class="m-2 btn-interact" onclick="pet('${kitten.id}')"> <img  src="/resources/pet.png" alt="PetCat" width="50" height="50">Pet </button>
 
-<button id="catFeedButton" type="button"   onclick="feed('${kitten.id}')" >  <img  src="/resources/cat.png" alt="FEED" width="50" height="50">Feed</button>
+<button id="catFeedButton" type="button" class="btn-interact"  onclick="feed('${kitten.id}')" >  <img  src="/resources/cat.png" alt="FEED" width="50" height="50">Feed</button>
 </div>
 
 <div class="kittenStats  display: inline-block;">
