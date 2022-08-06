@@ -7,6 +7,16 @@ let kittens = []
  * Then reset the form
  */
 function addKitten(event) {
+  event.preventDefault() //NOTE stops page refresh on name submission
+  let form=event.target
+  let kitten={
+    id: generateId(),
+    name: form.name.value,
+    mood: "Tolerant",
+    affection: 5
+
+  }
+  
 }
 
 /**

@@ -6,7 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Moody Kittens | CodeWorks</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/a2d3ad0e84.js" crossorigin="anonymous"></script>
   <link rel="shortcut icon" href="moody-logo.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,18 +20,27 @@
 <body>
   <header class="bg-dark d-flex align-items-center p-1 space-between">
     <img src="moody-logo.png" height="60" alt="Moody Kittens">
-    <form class="" onsubmit="addKitten(event)">
+    <!-- <form class="" onsubmit="addKitten(event)">
       <div class="d-flex">
         <input placeholder="Name" type="text" name="name" />
         <button class="btn-special" type="submit">
           /ᐠ｡ꞈ｡ᐟ\
         </button>
       </div>
-    </form>
+    </form> -->
+    <div class="m-2  d-flex ">
+      <input type="text" name="name" class="form-control"  placeholder="KittenName">
+      <button class="btn-special" type="submit">
+        <i class="fa-solid fa-cat fa-2xl"></i>
+      </button>
+    </div>
+   
   </header>
-  <main class="container">
-    <div id="welcome" class="d-flex justify-content-center">
-      <div class="card p-2 text-center w-50">
+  <main class="container p-3 align-items-center text-center">
+    <!-- NOTE adding hidden hides the welcome card -->
+    <div id="welcome" class="d-flex   justify-content-center hidden">
+      <!-- NOTE align-items-center here fixes kitten img -->
+      <div class="card p-2 text-center align-items-center "> 
         <img src="moody-logo.png" height="250" alt="Moody Kittens">
         <div class="mt-2">
           <b class="text-center">Hello Student</b>
@@ -44,6 +59,9 @@
     <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks</small>
   </footer>
 
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="app.js"></script>
 </body>
 
