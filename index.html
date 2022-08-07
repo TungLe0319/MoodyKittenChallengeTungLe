@@ -12,14 +12,14 @@
   <link rel="shortcut icon" href="moody-logo.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Mouse+Memoirs&family=Orbitron:wght@500&family=Poppins:wght@200&family=Roboto:ital,wght@1,300&family=Titan+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Catamaran&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <header class="bg-dark d-flex align-items-center p-1 space-between">
-    <img src="moody-logo.png" height="60" alt="Moody Kittens" class="">
+  <header class=" bg-dark d-flex align-items-center p-1 space-between">
+    <img src="moody-logo.png" height="60" alt="Moody Kittens" class="m-3">
     <!-- <form class="" onsubmit="addKitten(event)">
       <div class="d-flex">
         <input placeholder="Name" type="text" name="name" />
@@ -30,12 +30,12 @@
     </form> -->
     
     <form class=" " onsubmit="addKitten(event)">
-      <div class="d-flex">
+      <div class="d-flex mt-2 ">
        
-        <input type="text" class="form-control" name="name" placeholder="Kitty Name" required />
+        <input type="text" class="form-control" name="name" placeholder="Name..." required />
         <!-- <input placeholder="Name" type="text" name="name" /> -->
         <button class="btn-special" class="" type="submit">
-          <i class="fa-solid fa-cat fa-2xl heart"></i>
+          <i class="fa-solid fa-cat fa-2xl heart "></i>
         </button>
       </div>
     </form>
@@ -44,7 +44,7 @@
   </header>
   <main class="container bg-dark mt-3 p-3 align-items-center ">
     <!-- NOTE adding hidden hides the welcome card -->
-    <div id="welcome" class="d-flex   justify-content-center hidden">
+    <div id="welcome" class="d-flex   justify-content-center hidden ">
       <!-- NOTE align-items-center here fixes kitten img -->
       <div class="card p-2 text-center align-items-center "> 
         <img src="moody-logo.png" height="250" alt="Moody Kittens">
@@ -59,10 +59,10 @@
     </div>
   
       <!-- NOTE div that contains new kitten added -->
-      <div id="kittens" class="d-flex align-items-center">
+      <div id="kittens" class=" d-flex align-items-center">
       </div>
   </main>
-  <footer class=" text-dark p-2 d-flex align-items-center justify-content-center">
+  <footer class=" fixed-bottom text-dark p-2 d-flex align-items-center justify-content-center">
     <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks</small>
   </footer>
 

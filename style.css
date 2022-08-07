@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Mouse Memoirs', sans-serif;
 }
 :root {
   --primary: #abce5c;
@@ -30,7 +30,8 @@ header {
   height: 80px;
 }
 main {
-  min-height: calc(100vh - (120px + 80px));
+  /* NOTE min-height here added extra bottom padding space to the kitten card , decided to comment it out for now */
+  /* min-height: calc(100vh - (120px + 80px)); */
 }
 #welcome {
   min-height: calc(95vh - (120px + 80px));
@@ -71,6 +72,7 @@ input:focus {
   outline: none;
 }
 
+
 button {
   background-color: var(--primary);
   color: var(--light);
@@ -81,6 +83,7 @@ button {
   transition: all 0.2s ease;
   cursor: pointer;
   padding: 0.5em;
+  
 }
 button:focus {
   outline: none;
@@ -97,18 +100,18 @@ button.btn-special {
   border: none;
   width: 100px;
   box-shadow: none;
-  position: relative;
-  display: flex;
-  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  
+  /* align-items: center;
+  flex-direction: column;
+  justify-content: center; */
 }
 button.btn-special:after {
-  /* content: "ADD"; */
+  content: "Add ";
   
   margin-top: 5px;
-  font-size: 8pt;
-  color: var(--primary);
+  font-size: 18pt;
+  
 }
 button.btn-special:focus {
   outline: none;
@@ -116,13 +119,6 @@ button.btn-special:focus {
 button.btn-special:hover {
   color: orange;
   transition: 0.3s ease-in;
-}
-.container {
-  /* margin: 0 0.5em; */
-  background-color: var(--light);
-
-  box-shadow: var(--shadow);
-  border-radius: 4px;
 }
 
 
@@ -133,11 +129,45 @@ button.btn-special:hover {
   border-radius: 4px;
 }
 
-/* /////////////////////////////////////////////////////////// */
+/* ANCHOR////////////////////////////CUSTOM ADDED CSS I IMPLEMENTED/////////////////////////////// */
+.interactButton{
+  
+  font-size: 20pt;
+}
+
+.interactButton:hover{
+  animation: rotate 3s infinite;
+}
+.container {
+  /* margin: 0 0.5em; */
+  background-color: var(--light);
+  
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg)
+  }
+  5% {
+    transform: rotate(-45deg)
+  }
+  25% {
+    transform: rotate(45deg)
+  }
+  50% {
+    transform: rotate(-45deg)
+  }
+  100% {
+    transform: rotate(45deg)
+  }
+}
 
 @keyframes animateHeart {
   0% {
     transform: scale(0.8);
+   
   }
   5% {
     transform: scale(0.8);
@@ -175,11 +205,28 @@ button.btn-special:hover {
     0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
   padding: 14px 80px 18px 36px;
   cursor: pointer;
+ 
 }
 
 .cardEmo:hover {
   transform: scale(1.01);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+.cardName {
+  font-size: 25pt;
+  
+ 
+ 
+}
+
+.cardName:hover {
+  color: #f3ecf5;
+  
+  transition: 0 2.0s ease-in-out;
+  transform: scale(1.2);
+ 
 }
 
 .shadow {
@@ -204,7 +251,7 @@ button.btn-special:hover {
 }
 .kitten.gone {
   color: var(--danger);
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 .bg-dark {
@@ -224,9 +271,9 @@ button.btn-special:hover {
 }
 
 .btn-cancel {
-
+font-size: 20pt;
   background-color: transparent;
-  color: #ff9500;
+  color: #08010c;
   box-shadow: none;
 }
 .btn-cancel:hover {
@@ -237,6 +284,7 @@ button.btn-special:hover {
 }
 .btn-cancel:after {
  content: "Remove";
+ 
 }
 
 .text-danger {
