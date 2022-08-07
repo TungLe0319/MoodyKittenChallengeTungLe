@@ -1,7 +1,9 @@
 let kittens = [];
+
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
-setKittenMood(kittens);
+setKittenMood(id);
+
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -107,24 +109,16 @@ function findKittenById(id) {
 function pet(id) {
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
-  if (currentKitten.affection >= 10) {
-    if (rNum > 0.5) {
-      currentKitten.affection--;
-    }
-    return;
-  }
+  // stops pet function once it hits 0
   if (currentKitten.affection <= 0) {
-    if (rNum > 0.5) {
-      currentKitten.affection++;
-    }
     return;
   }
 
   if (rNum > 0.5) {
-    currentKitten.affection++;
+    currentKitten.affection--;
   }
   if (rNum < 0.5) {
-    currentKitten.affection++;
+    currentKitten.affection--;
   }
 
   saveKittens();
@@ -139,26 +133,8 @@ function pet(id) {
  */
 function catnip(id) {
   let currentKitten = findKittenById(id);
-  let rNum = Math.random();
-  if (currentKitten.affection >= 10) {
-    if (rNum > 0.5) {
-      currentKitten.affection--;
-    }
-    return;
-  }
-  if (currentKitten.affection <= 0) {
-    if (rNum > 0.5) {
-      currentKitten.affection++;
-    }
-    return;
-  }
-
-  if (rNum > 0.5) {
-    currentKitten.affection--;
-  }
-  if (rNum < 0.5) {
-    currentKitten.affection--;
-  }
+  currentKitten.affection = 5;
+  currentKitten.mood = "Tolerant";
   saveKittens();
   setKittenMood(currentKitten);
 }
@@ -167,23 +143,23 @@ function catnip(id) {
  * Sets the kittens mood based on its affection
  * @param {Kitten} kitten
  */
-function setKittenMood(kitten) {
-  let currentKitten = findKittenById(kitten);
-  if (currentKitten.affection >= 10) {
-    currentKitten.mood = "Happy";
+function setKittenMood(id) {
+  let currentKitten = findKittenById(id);
+  if (currentKitten.affection > 9) {
     document.getElementById("catImage").className += "kitten happy";
+    currentKitten.mood = "Happy";
   }
   if (currentKitten.affection == 5) {
-    currentKitten.mood = "Tolerant";
     document.getElementById("catImage").className += "kitten tolerant";
+    currentKitten.mood = "Tolerant";
   }
-  if (currentKitten.affection <= 3) {
-    currentKitten.mood = "Angry";
+  if (currentKitten.affection < 4) {
     document.getElementById("catImage").className += "kitten angry";
+    currentKitten.mood = "Angry";
   }
-  if (currentKitten.affection == 0) {
-    currentKitten.mood = "Gone FOREVER";
+  if (currentKitten.affection <= 1) {
     document.getElementById("catImage").className += "kitten gone";
+    currentKitten.mood = "Gone FOREVER";
   }
   saveKittens();
 }
