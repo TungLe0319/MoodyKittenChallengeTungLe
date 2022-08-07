@@ -23,6 +23,8 @@ function addKitten(event) {
     affection: 5,
   };
 
+  // document.getElementById("mainBody").className.toggle="hidden"
+
   if (currentKitten) {
     alert("you already have this cat!");
     form.reset();
@@ -190,7 +192,7 @@ function catnip(id) {
 function setKittenMood(kitten) {
   let currentKitten = findKittenById(kitten);
   if (currentKitten.affection == 10) {
-    document.getElementById("catImage").className += "kitten happy";
+    document.getElementById("catImage").className += "kitten happy moody";
     currentKitten.mood = "Happy";
   }
   if (currentKitten.affection >= 9) {
@@ -207,7 +209,7 @@ function setKittenMood(kitten) {
     currentKitten.mood = "Angry";
   }
   if (currentKitten.affection == 3) {
-    document.getElementById("catImage").className += "kitten angry";
+    document.getElementById("catImage").className += "kitten angry moodyMad";
     currentKitten.mood = "Angry";
   }
   if (currentKitten.affection <= 1) {
