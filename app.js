@@ -65,17 +65,17 @@ function drawKittens() {
   kittenTemplate = "";
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div id="catImage" class="container cardEmo m-2    p-2 align-items-center text-center  ">
+    <div id="catImage" class="container-fluid cardEmo m-2    p-2 align-items-center text-center  ">
     <img src="moody-logo.png"  alt="Moody Kittens" class="m-5 w-50  ">
 
     <div class="d-grid gap-2 d-md-block">
-    <button class="btn btn-warning" type="button" onclick="pet('${kitten.id}')" >Pet</button>
-    <button class="btn btn-danger " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
+    <button class=" m-2 btn btn-warning" type="button" onclick="pet('${kitten.id}')" >Pet</button>
+    <button class="m-2 btn btn-danger " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
   </div>
     
    <h3>Name: ${kitten.name}</h3>
    <h3>Mood: ${kitten.mood}</h3>
-   <div class="heart"> <h3>Affection: ${kitten.affection}</h3></div>
+   <div class=""> <h3>Affection: ${kitten.affection}</h3></div>
    
   
     
@@ -115,7 +115,7 @@ function pet(id) {
   }
 
   if (rNum > 0.5) {
-    currentKitten.affection--;
+    currentKitten.affection++;
   }
   if (rNum < 0.5) {
     currentKitten.affection--;

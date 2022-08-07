@@ -105,6 +105,7 @@ button.btn-special {
 }
 button.btn-special:after {
   /* content: "ADD"; */
+  
   margin-top: 5px;
   font-size: 8pt;
   color: var(--primary);
@@ -123,6 +124,7 @@ button.btn-special:hover {
   box-shadow: var(--shadow);
   border-radius: 4px;
 }
+
 
 .card {
   background-color: var(--light);
@@ -222,6 +224,7 @@ button.btn-special:hover {
 }
 
 .btn-cancel {
+
   background-color: transparent;
   color: #ff9500;
   box-shadow: none;
@@ -231,6 +234,9 @@ button.btn-special:hover {
   background-color: transparent;
   box-shadow: none;
   transform: scale(1.05);
+}
+.btn-cancel:after {
+ content: "Remove";
 }
 
 .text-danger {
