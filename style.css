@@ -88,7 +88,7 @@ button:focus {
 button:hover {
   background-color: var(--primary-lighten);
   transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
 button.btn-special {
@@ -131,6 +131,55 @@ button.btn-special:hover {
   border-radius: 4px;
 }
 
+/* /////////////////////////////////////////////////////////// */
+
+@keyframes animateHeart {
+  0% {
+    transform: scale(0.8);
+  }
+  5% {
+    transform: scale(0.8);
+  }
+  10% {
+    transform: scale(0.85);
+  }
+  15% {
+    transform: scale(0.85);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+.heart {
+  
+
+  animation: animateHeart 1.2s infinite;
+}
+
+.cardEmo {
+  border-radius: 4px;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    180deg,
+    rgba(131, 58, 180, 0.08309261204481788) 0%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    0.3s box-shadow,
+    0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
+  padding: 14px 80px 18px 36px;
+  cursor: pointer;
+}
+
+.cardEmo:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
+
 .shadow {
   filter: drop-shadow(var(--shadow));
 }
@@ -153,7 +202,7 @@ button.btn-special:hover {
 }
 .kitten.gone {
   color: var(--danger);
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .bg-dark {
@@ -178,10 +227,10 @@ button.btn-special:hover {
   box-shadow: none;
 }
 .btn-cancel:hover {
-  color: #ffd45c;
+  color: #f3ecf5;
   background-color: transparent;
+  box-shadow: none;
   transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 .text-danger {
