@@ -87,6 +87,8 @@ button:focus {
 }
 button:hover {
   background-color: var(--primary-lighten);
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 button.btn-special {
@@ -111,10 +113,15 @@ button.btn-special:focus {
   outline: none;
 }
 button.btn-special:hover {
-  color: var(--primary);
+  color: orange;
+  transition: 0.3s ease-in;
 }
 .container {
   /* margin: 0 0.5em; */
+  background-color: var(--light);
+
+  box-shadow: var(--shadow);
+  border-radius: 4px;
 }
 
 .card {
@@ -166,12 +173,15 @@ button.btn-special:hover {
 }
 
 .btn-cancel {
-  background-color: red;
-  border-color: lightcoral;
+  background-color: transparent;
+  color: #ff9500;
+  box-shadow: none;
 }
 .btn-cancel:hover {
-  background-color: #fa4141;
-  border-color: #ff3737;
+  color: #ffd45c;
+  background-color: transparent;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 .text-danger {
