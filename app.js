@@ -2,7 +2,7 @@ let kittens = [];
 
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
-setKittenMood(kittens);
+setKittenMood(kittens) //NOTE persists mood/img through page reload
 
 /**
  * Called when submitting the new Kitten Form
@@ -35,7 +35,7 @@ function addKitten(event) {
   saveKittens();
   form.reset();
   drawKittens();
-  setKittenMood(kitten);
+  
 
   console.log(kitten);
 }
@@ -72,7 +72,7 @@ function drawKittens() {
     kittenTemplate += `
     <div class="container cardEmo m-2 p-2 text-center  ">
     <div id="catImage" >
-    <img src="moody-logo.png"  alt="Moody Kittens" class="m-5 w-50  ">
+    <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-25">
     </div>
     
 
@@ -189,8 +189,8 @@ function catnip(id) {
  * Sets the kittens mood based on its affection
  * @param {Kitten} kitten
  */
-function setKittenMood(kitten) {
-  let currentKitten = findKittenById(kitten);
+function setKittenMood(id) {
+ let currentKitten=findKittenById(id)
   if (currentKitten.affection == 10) {
     document.getElementById("catImage").className += "kitten happy moody";
     currentKitten.mood = "Happy";
@@ -241,8 +241,8 @@ function setKittenMood(kitten) {
   //     currentKitten.mood = "Gone";
   //     break;
   // }
-  saveKittens();
-  setKittenMood(currentKitten);
+ 
+ 
 }
 
 /**
