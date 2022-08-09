@@ -148,6 +148,7 @@ button.btn-special:hover {
 
 
 
+
 @keyframes kittenFloat{
   0% ,100% {
     transform:  translateY(-25px) ;
@@ -266,6 +267,33 @@ button.btn-special:hover {
 .kitten.happy img {
   filter: drop-shadow(2px 4px 6px #00ffb3);
 }
+.happyCard{
+  animation: happyFilter  5s infinite ;
+}
+@keyframes happyFilter{
+  0%{
+    filter: drop-shadow(2px 4px 6px #00ffb3);
+  }
+  10%{
+    filter: drop-shadow(2px 4px 6px #79ffd7);
+  }
+  25%{
+    filter: drop-shadow(2px 4px 6px #bbffeb);
+  }
+  50%{
+    filter: drop-shadow(2px 4px 6px #e9fff8);
+  }
+65%{
+    filter: drop-shadow(2px 4px 6px #bbffeb);
+  }
+  75%{
+    filter: drop-shadow(2px 4px 6px #79ffd7);
+  }
+  100%{
+    filter: drop-shadow(2px 4px 6px #00ffb3);
+  }
+}
+
 .kitten.tolerant img {
   filter: drop-shadow(2px 4px 6px #646464);
 }
@@ -275,6 +303,25 @@ button.btn-special:hover {
 .kitten.gone img {
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(0);
 }
+.goneCard{
+  
+  animation: goneFilter  5s ease-in;
+
+}
+@keyframes goneFilter{
+  0%{
+    transition: all 2s ease;
+    filter:grayscale(0%)
+  }
+ 
+  100%{
+    transition: all 2s ease;
+    filter: grayscale(100%) 
+    
+  }
+}
+
+
 .kitten.gone {
   color: var(--danger);
   pointer-events: none;

@@ -2,7 +2,7 @@ let kittens = [];
 
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
-setKittenMood(kittens) //NOTE persists mood/img through page reload
+setKittenMood(kittens); //NOTE persists mood/img through page reload
 
 /**
  * Called when submitting the new Kitten Form
@@ -35,7 +35,6 @@ function addKitten(event) {
   saveKittens();
   form.reset();
   drawKittens();
-  
 
   console.log(kitten);
 }
@@ -64,20 +63,21 @@ function loadKittens() {
 /**
  * Draw all of the kittens to the kittens element
  * NOTE when doing templates must use backslash ``
+ * NOTE SOMETHING IN THIS FUNCTION ISN'T ALLOWING ME TO HAVE BUTTONS SPECIFIC TO NAME
  */
 function drawKittens() {
   kittenCard = document.getElementById("kittens");
   kittenTemplate = "";
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div class="container cardEmo m-2 p-2 text-center  ">
+    <div id="card2" class="container cardEmo m-2 p-2 text-center  ">
     <div id="catImage" >
     <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-25">
     </div>
     
 
     <div class="d-grid  d-md-block interactButtons">
-    <button class=" m-2 btn btn-warning interactButton " type="button" onclick="feed('${kitten.id}')" >Feed</button>
+    <button class=" m-2 btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Annoy</button>
     <button class=" m-2 btn btn-warning interactButton " type="button" onclick="pet('${kitten.id}')" >Pet</button>
     <button class="m-2 btn btn-danger interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
   </div>
@@ -190,9 +190,10 @@ function catnip(id) {
  * @param {Kitten} kitten
  */
 function setKittenMood(id) {
- let currentKitten=findKittenById(id)
+  let currentKitten = findKittenById(id);
   if (currentKitten.affection == 10) {
     document.getElementById("catImage").className += "kitten happy moody";
+    document.getElementById("card2").className += "happyCard";
     currentKitten.mood = "Happy";
   }
   if (currentKitten.affection >= 9) {
@@ -205,11 +206,11 @@ function setKittenMood(id) {
   }
 
   if (currentKitten.affection <= 4) {
-   
     currentKitten.mood = "Angry";
   }
   if (currentKitten.affection == 3) {
-    document.getElementById("catImage").className += "kitten angry moodyMad";
+    document.getElementById("catImage").className += "kitten angry moodyMad ";
+
     currentKitten.mood = "Angry";
   }
   if (currentKitten.affection <= 1) {
@@ -217,6 +218,7 @@ function setKittenMood(id) {
   }
   if (currentKitten.affection == 0) {
     document.getElementById("catImage").className += "kitten gone";
+    document.getElementById("card2").className += "goneCard";
     currentKitten.mood = "Gone FOREVER";
   }
 
@@ -241,8 +243,6 @@ function setKittenMood(id) {
   //     currentKitten.mood = "Gone";
   //     break;
   // }
- 
- 
 }
 
 /**
@@ -253,6 +253,7 @@ function clearKittens(id) {
   kittenIndex = kittens.findIndex((kitten) => kitten.id == id);
   kittens.splice(kittenIndex, 1);
   saveKittens();
+  drawKittens(); //NOTE resets the page and removes the kittens without delay
 }
 
 /**
