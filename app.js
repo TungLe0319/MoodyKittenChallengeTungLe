@@ -16,27 +16,26 @@ function addKitten(event) {
   let form = event.target;
   let kittenName = form.name.value;
   let currentKitten = kittens.find((kitten) => kitten.name == kittenName);
-  let kitten = {
-    id: generateId(),
-    name: form.name.value,
-    mood: "Tolerant",
-    affection: 5,
-  };
 
-  // document.getElementById("mainBody").className.toggle="hidden"
-
-  if (currentKitten) {
-    alert("you already have this cat!");
+  // NOTE another way to write this could be an !conditional i think
+  if (!currentKitten) {
+    let kitten = {
+      id: generateId(),
+      name: form.name.value,
+      mood: "Tolerant",
+      affection: 5,
+    };
+    kittens.push(kitten);
+  
+  } else {
+    alert("you can't have two of the same kittens at once, try another name!");
     form.reset();
-    return; // STOPS THE FUNCTION HERE
+    return;
   }
-
-  kittens.push(kitten);
   saveKittens();
   form.reset();
   drawKittens();
-
-  console.log(kitten);
+ 
 }
 
 /**
@@ -63,23 +62,24 @@ function loadKittens() {
 /**
  * Draw all of the kittens to the kittens element
  * NOTE when doing templates must use backslash ``
- * NOTE SOMETHING IN THIS FUNCTION ISN'T ALLOWING ME TO HAVE BUTTONS SPECIFIC TO NAME
+ * NOTE SOMETHING IN THIS FUNCTION ISN'T ALLOWING ME TO HAVE BUTTONS SPECIFIC TO
+//  * NOTE clearbutton div I want to somehow get it to stay at the bottom right corner of the container
  */
 function drawKittens() {
-  kittenCard = document.getElementById("kittens");
-  kittenTemplate = "";
+  let kittenCard = document.getElementById("kittens");
+  let kittenTemplate = "";
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div id="card2" class="container cardEmo m-2 p-2 text-center  ">
+    <div id="card2" class="container cardEmo m-2 p-2 text-center  position-relative ">
     <div id="catImage" >
-    <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-25">
+    <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-50">
     </div>
     
 
-    <div class="d-grid  d-md-block interactButtons">
-    <button class=" m-2 btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Annoy</button>
+    <div class=" m-5 d-md-block interactButtons ">
+    <button id="feedBtn" class=" m-2 btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Annoy</button>
     <button class=" m-2 btn btn-warning interactButton " type="button" onclick="pet('${kitten.id}')" >Pet</button>
-    <button class="m-2 btn btn-danger interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
+    <button class="m-2 btn btn-danger text-dark interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
   </div>
     <div id="kittenStats" class=" mt-5 mb-5 p-2 ">  
     <div class="cardName">Name: ${kitten.name}</div>
@@ -89,10 +89,12 @@ function drawKittens() {
    </div>
 
   
-    
-    <button  type="button" class="btn-cancel m-3" onclick="clearKittens('${kitten.id}')">
+    <div class="position-absolute bottom-0 end-0">
+    <button id="clearButton" type="button" class="btn-cancel m-3 " onclick="clearKittens('${kitten.id}')">
+    <i id="arrowRight" class="fa-solid fa-arrow-right fa-2xl heart hidden text-light"> </i>
     <i class="fa-solid fa-shield-cat fa-2xl"></i>
     </button>
+    </div>
     </div>
     
     `;
@@ -194,6 +196,7 @@ function setKittenMood(id) {
   if (currentKitten.affection == 10) {
     document.getElementById("catImage").className += "kitten happy moody";
     document.getElementById("card2").className += "happyCard";
+
     currentKitten.mood = "Happy";
   }
   if (currentKitten.affection >= 9) {
@@ -210,6 +213,7 @@ function setKittenMood(id) {
   }
   if (currentKitten.affection == 3) {
     document.getElementById("catImage").className += "kitten angry moodyMad ";
+    document.getElementById("card2").className += "angryCard";
 
     currentKitten.mood = "Angry";
   }
@@ -219,6 +223,8 @@ function setKittenMood(id) {
   if (currentKitten.affection == 0) {
     document.getElementById("catImage").className += "kitten gone";
     document.getElementById("card2").className += "goneCard";
+    document.getElementById("arrowRight").classList.toggle("hidden");
+
     currentKitten.mood = "Gone FOREVER";
   }
 

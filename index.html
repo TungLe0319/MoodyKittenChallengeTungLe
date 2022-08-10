@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <header class=" bg-dark d-flex align-items-center p-1 space-between">
+  <header class=" bg-dark d-flex align-items-center p-1 space-between ">
     <img src="moody-logo.png" height="60" alt="Moody Kittens" class="m-3">
     <!-- <form class="" onsubmit="addKitten(event)">
       <div class="d-flex">
@@ -32,7 +32,7 @@
     <form class=" " onsubmit="addKitten(event)">
       <div class="d-flex mt-2 ">
        
-        <input type="text" class="form-control" name="name" placeholder="Name..." required />
+        <input type="text" class="form-control " name="name" placeholder="Name..." required />
         <!-- <input placeholder="Name" type="text" name="name" /> -->
         <button class="btn-special" class="" type="submit">
           <i class="fa-solid fa-cat fa-2xl heart "></i>
@@ -42,7 +42,8 @@
 
 
   </header>
-  <main id="mainBody" class="container bg-dark mt-3 p-3 align-items-center  ">
+  <main id="mainBody" class="container mt-3 p-3 align-items-center  w-75 ">
+    
     <!-- NOTE adding hidden hides the welcome card -->
     <div id="welcome" class="d-flex   justify-content-center hidden ">
       <!-- NOTE align-items-center here fixes kitten img -->
@@ -59,10 +60,11 @@
     </div>
  
       <!-- NOTE div that contains new kitten added -->
-      <div id="kittens" class=" d-flex align-items-center">
+      <div id="kittens" class=" d-flex align-items-center ">
+        
       </div>
   </main>
-  <footer class=" fixed-bottom text-dark p-2 d-flex align-items-center justify-content-center">
+  <footer class="  text-dark p-2 d-flex align-items-center justify-content-center">
     <small>Created with <span style="color: var(--primary)">&hearts;</span> by CodeWorks</small>
   </footer>
 
