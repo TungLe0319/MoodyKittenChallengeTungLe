@@ -1,8 +1,10 @@
 let kittens = [];
-
+let kitten = {};
+let mood = "";
+let affection = 5;
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
-setKittenMood(kittens); //NOTE persists mood/img through page reload
+//NOTE persists mood/img through page reload
 
 /**
  * Called when submitting the new Kitten Form
@@ -35,7 +37,6 @@ function addKitten(event) {
   saveKittens();
   form.reset();
   drawKittens();
- 
 }
 
 /**
@@ -70,9 +71,9 @@ function drawKittens() {
   let kittenTemplate = "";
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div id="card2" class="container cardEmo m-2 p-2 text-center  position-relative ">
-    <div id="catImage" >
-    <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-50">
+    <div id="card2" class="container cardEmo m-2 p-2 text-center  position-relative ${kitten.mood}Card ">
+    <div id="catImage" class=" kitten ${kitten.mood} " >
+    <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-50 ">
     </div>
     
 
@@ -83,7 +84,7 @@ function drawKittens() {
   </div>
     <div id="kittenStats" class=" mt-5 mb-5 p-2 ">  
     <div class="cardName">Name: ${kitten.name}</div>
-   <div class="cardName">Mood: ${kitten.id}</div>
+   <div class="cardName">Mood: ${kitten.mood}</div>
    
    <div class="cardName"> Affection: ${kitten.affection}</div>
    </div>
@@ -104,11 +105,12 @@ function drawKittens() {
 
 /**
  * Find the kitten in the array by its id
+ * NOTE changing the comparion == to ===instead solved the problem of buttons affecting only one element kitten
  * @param {string} id
  * @return {Kitten}
  */
 function findKittenById(id) {
-  return kittens.find((kitten) => (kitten.id = id));
+  return kittens.find((kitten) => kitten.id === id);
 }
 
 /**
@@ -120,8 +122,6 @@ function findKittenById(id) {
  * @param {string} id
  */
 function pet(id) {
-// let kittenIndex = kittens.findIndex((kitten) => kitten.id == id);
-let kittenAF=kittens.findIndex((kitten)=> kitten.affection == id)
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
 
@@ -135,14 +135,15 @@ let kittenAF=kittens.findIndex((kitten)=> kitten.affection == id)
   }
 
   if (rNum > 0.5) {
-    kittenAF
-    // currentKitten.affection++;
+    currentKitten.affection++;
+    setKittenMood(currentKitten);
+    saveKittens();
   }
   if (rNum < 0.5) {
-    // currentKitten.affection++;
+    currentKitten.affection++;
+    setKittenMood(currentKitten);
+    saveKittens();
   }
-  saveKittens();
-  setKittenMood(currentKitten);
 }
 
 /**
@@ -168,12 +169,14 @@ function feed(id) {
 
   if (rNum > 0.5) {
     currentKitten.affection--;
+    setKittenMood(currentKitten);
+    saveKittens();
   }
   if (rNum < 0.5) {
     currentKitten.affection--;
+    setKittenMood(currentKitten);
+    saveKittens();
   }
-  saveKittens();
-  setKittenMood(currentKitten);
 }
 
 /**
@@ -187,49 +190,63 @@ function catnip(id) {
   currentKitten.affection = 5;
   currentKitten.mood = "Tolerant";
   saveKittens();
-  setKittenMood(currentKitten);
 }
 
 /**
  * Sets the kittens mood based on its affection
  * @param {Kitten} kitten
  */
-function setKittenMood(id) {
-  let currentKitten = findKittenById(id);
-  if (currentKitten.affection == 10) {
-    document.getElementById("catImage").className += "kitten happy moody";
-    document.getElementById("card2").className += "happyCard";
-
-    currentKitten.mood = "Happy";
+function setKittenMood(kitten) {
+  document.getElementById("catImage").classList.remove(kitten.mood);
+  if (kitten.affection >= 10) {
+    kitten.mood = "happy";
   }
-  if (currentKitten.affection >= 9) {
-    currentKitten.mood = "Happy";
+  if (kitten.affection == 5) {
+    kitten.mood = "tolerant";
   }
-
-  if (currentKitten.affection == 5) {
-    document.getElementById("catImage").className += "kitten tolerant";
-    currentKitten.mood = "Tolerant";
+  if (kitten.affection <= 3) {
+    kitten.mood = "angry";
   }
-
-  if (currentKitten.affection <= 4) {
-    currentKitten.mood = "Angry";
-  }
-  if (currentKitten.affection == 3) {
-    document.getElementById("catImage").className += "kitten angry moodyMad ";
-    document.getElementById("card2").className += "angryCard";
-
-    currentKitten.mood = "Angry";
-  }
-  if (currentKitten.affection <= 1) {
-    currentKitten.mood = "Gone FOREVER";
-  }
-  if (currentKitten.affection == 0) {
-    document.getElementById("catImage").className += "kitten gone";
-    document.getElementById("card2").className += "goneCard";
+  if (kitten.affection == 0) {
+    kitten.mood = "gone";
     document.getElementById("arrowRight").classList.toggle("hidden");
-
-    currentKitten.mood = "Gone FOREVER";
   }
+  document.getElementById("catImage").classList.add(kitten.mood);
+  document.getElementById("card2").classList.add(kitten.mood);
+  saveKittens();
+
+  // let currentKitten = findKittenById(id);
+  // if (kitten.affection >= 10) {
+  //   document.getElementById("catImage").className += "kitten happy moody";
+  //   document.getElementById("card2").className += "happyCard";
+  //   kitten.mood = "Happy";
+  // }
+  // if (kitten.affection >= 9) {
+  //   kitten.mood = "Happy";
+  // }
+
+  // if (kitten.affection == 5) {
+  //   document.getElementById("catImage").className += "kitten tolerant";
+  //   kitten.mood = "Tolerant";
+  // }
+
+  // if (kitten.affection <= 4) {
+  //   kitten.mood = "Angry";
+  // }
+  // if (kitten.affection <= 3) {
+  //   document.getElementById("catImage").className += "kitten angry moodyMad ";
+  //   document.getElementById("card2").className += "angryCard";
+  //  kitten.mood = "Angry";
+  // }
+  // if (kitten.affection <= 1) {
+  //  kitten .mood = "Gone FOREVER";
+  // }
+  // if (kitten.affection <= 0) {
+  //   document.getElementById("catImage").className += "kitten gone";
+  //   document.getElementById("card2").className += "goneCard";
+  //   document.getElementById("arrowRight").classList.toggle("hidden");
+  //   kitten.mood = "Gone FOREVER";
+  // }
 
   // switch (currentKitten.affection) {
   //   case 9:
@@ -252,10 +269,6 @@ function setKittenMood(id) {
   //     currentKitten.mood = "Gone";
   //     break;
   // }
-}
-
-function connectingBtnToId (){
- 
 }
 
 /**
