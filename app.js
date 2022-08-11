@@ -26,7 +26,7 @@ function addKitten(event) {
       affection: 5,
     };
     kittens.push(kitten);
-  
+    drawKittens();
   } else {
     alert("you can't have two of the same kittens at once, try another name!");
     form.reset();
@@ -83,7 +83,7 @@ function drawKittens() {
   </div>
     <div id="kittenStats" class=" mt-5 mb-5 p-2 ">  
     <div class="cardName">Name: ${kitten.name}</div>
-   <div class="cardName">Mood: ${kitten.mood}</div>
+   <div class="cardName">Mood: ${kitten.id}</div>
    
    <div class="cardName"> Affection: ${kitten.affection}</div>
    </div>
@@ -120,6 +120,8 @@ function findKittenById(id) {
  * @param {string} id
  */
 function pet(id) {
+// let kittenIndex = kittens.findIndex((kitten) => kitten.id == id);
+let kittenAF=kittens.findIndex((kitten)=> kitten.affection == id)
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
 
@@ -133,10 +135,11 @@ function pet(id) {
   }
 
   if (rNum > 0.5) {
-    currentKitten.affection++;
+    kittenAF
+    // currentKitten.affection++;
   }
   if (rNum < 0.5) {
-    currentKitten.affection++;
+    // currentKitten.affection++;
   }
   saveKittens();
   setKittenMood(currentKitten);
@@ -251,9 +254,14 @@ function setKittenMood(id) {
   // }
 }
 
+function connectingBtnToId (){
+ 
+}
+
 /**
  * Removes all of the kittens from the array
  * remember to save this change
+ * NOTE possibly using the find index for the buttons will solve the problem of secondary cards affecting the first one
  */
 function clearKittens(id) {
   kittenIndex = kittens.findIndex((kitten) => kitten.id == id);

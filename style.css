@@ -234,6 +234,7 @@ button.btn-special:hover {
     0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
   padding: 14px 80px 18px 36px;
   cursor: pointer;
+
  
 }
 
@@ -246,6 +247,7 @@ button.btn-special:hover {
 
 
 .cardName {
+  
   font-size: 25pt;
 }
 
@@ -335,6 +337,7 @@ button.btn-special:hover {
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(0);
 }
 .goneCard{ 
+ 
   animation: goneFilter  1s ease-in 1;
   /* this pauses the animation at the end properly change. */
   animation-fill-mode: forwards;
