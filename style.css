@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: 'Mouse Memoirs', sans-serif;
+  font-family: "Mouse Memoirs", sans-serif;
 }
 :root {
   --primary: #abce5c;
@@ -23,7 +23,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  
 }
 
 header {
@@ -58,7 +57,6 @@ label {
 }
 
 input {
-  
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -73,7 +71,6 @@ input:focus {
   outline: none;
 }
 
-
 button {
   background-color: var(--primary);
   color: var(--light);
@@ -84,7 +81,6 @@ button {
   transition: all 0.2s ease;
   cursor: pointer;
   padding: 0.5em;
-  
 }
 button:focus {
   outline: none;
@@ -102,17 +98,16 @@ button.btn-special {
   width: 100px;
   box-shadow: none;
   flex-direction: column;
-  
+
   /* align-items: center;
   flex-direction: column;
   justify-content: center; */
 }
 button.btn-special:after {
   content: "Add ";
-  
+
   margin-top: 5px;
   font-size: 18pt;
-  
 }
 button.btn-special:focus {
   outline: none;
@@ -122,7 +117,6 @@ button.btn-special:hover {
   transition: 0.3s ease-in;
 }
 
-
 .card {
   background-color: var(--light);
   padding: 1em;
@@ -131,76 +125,70 @@ button.btn-special:hover {
 }
 
 /* ANCHOR////////////////////////////CUSTOM ADDED CSS I IMPLEMENTED/////////////////////////////// */
-.interactButton{
-  
+.interactButton {
   font-size: 20pt;
 }
 
-.interactButton:hover{
-  box-shadow:
-  0 0 10px 4px #fff,  /* inner white */
-
-  0 0 70px 8px #0ff; 
+.interactButton:hover {
+  box-shadow: 0 0 10px 4px #fff, /* inner white */ 0 0 70px 8px #0ff;
   animation: rotate 3s infinite;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 .container {
-  /* margin: 0 0.5em; */ 
+  /* margin: 0 0.5em; */
   min-height: 80vh;
 }
 
-
-
-
-@keyframes kittenFloat{
-  0% ,100% {
-    transform:  translateY(-25px) ;
+@keyframes kittenFloat {
+  0%,
+  100% {
+    transform: translateY(-25px);
   }
   50% {
-    transform: translateY(-15px) ;
+    transform: translateY(-15px);
   }
 }
-@keyframes kittenFloatMad{
-  0% ,100% {
-    transform:  translateX(-25px) ;
+@keyframes kittenFloatMad {
+  0%,
+  100% {
+    transform: translateX(-25px);
   }
   50% {
     transform: translateX(25px) rotate(360deg);
   }
 }
 
-.moody{
+.happyMood {
   animation: kittenFloat 2s infinite;
 }
-.moodyMad{
+.angryMood {
   animation: kittenFloatMad 2s 1;
 }
 
 @keyframes rotate {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
   5% {
-    transform: rotate(-15deg)
+    transform: rotate(-15deg);
   }
   25% {
-    transform: rotate(15deg)
+    transform: rotate(15deg);
   }
   50% {
-    transform: rotate(-15deg)
+    transform: rotate(-15deg);
   }
   75% {
-    transform: rotate(15deg)
+    transform: rotate(15deg);
   }
   100% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
 }
 
 @keyframes animateHeart {
   0% {
     transform: scale(0.8);
-   
   }
   5% {
     transform: scale(0.8);
@@ -226,7 +214,11 @@ button.btn-special:hover {
   border-radius: 4px;
   /* border: #212529 5px solid ; */
   filter: brightness(75%);
-  background-image: radial-gradient( circle 2177px at -8.5% 31%,  rgba(123,70,246,1) 0%, rgba(154,215,241,1) 41.9% );
+  background-image: radial-gradient(
+    circle 2177px at -8.5% 31%,
+    rgba(123, 70, 246, 1) 0%,
+    rgba(154, 215, 241, 1) 41.9%
+  );
 
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
   transition: 0.3s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
@@ -234,26 +226,22 @@ button.btn-special:hover {
     0.3s -webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12);
   padding: 14px 80px 18px 36px;
   cursor: pointer;
-
- 
 }
 
 .cardEmo:hover {
   filter: brightness(100%);
   transform: scale(1.01);
-  box-shadow: 4px 10px 20px 10px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 4px 10px 20px 10px rgba(0, 0, 0, 0.12),
+    0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
-
-
 .cardName {
-  
   font-size: 25pt;
 }
 
 .cardName:hover {
   color: #f3ecf5;
-  transition: 0 2.0s ease-in-out;
+  transition: 0 2s ease-in-out;
   transform: scale(1.2);
 }
 
@@ -268,31 +256,29 @@ button.btn-special:hover {
 .kitten.happy img {
   filter: drop-shadow(2px 4px 6px #00ffb3);
 }
-.happyCard{
-  
-  animation: happyFilter  5s infinite ;
+.happyCard {
+  animation: happyFilter 5s infinite;
 }
-@keyframes happyFilter{
-  0%{
+@keyframes happyFilter {
+  0% {
     filter: drop-shadow(2px 4px 6px #00ffb3);
   }
-  10%{
+  10% {
     filter: drop-shadow(2px 4px 6px #79ffd7);
   }
-  25%{
+  25% {
     filter: drop-shadow(2px 4px 6px #bbffeb);
   }
-  50%{
-
+  50% {
     filter: drop-shadow(2px 4px 6px #e9fff8);
   }
-65%{
+  65% {
     filter: drop-shadow(2px 4px 6px #bbffeb);
   }
-  75%{
+  75% {
     filter: drop-shadow(2px 4px 6px #79ffd7);
   }
-  100%{
+  100% {
     filter: drop-shadow(2px 4px 6px #00ffb3);
   }
 }
@@ -304,58 +290,52 @@ button.btn-special:hover {
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(1);
 }
 
-.angryCard{
-  animation: angryFilter  5s infinite ;
+.angryCard {
+  animation: angryFilter 5s infinite;
 }
-@keyframes angryFilter{
-  0%{
+@keyframes angryFilter {
+  0% {
     filter: drop-shadow(2px 4px 6px #ff3300);
   }
-  10%{
+  10% {
     filter: drop-shadow(2px 4px 6px #ff4b1e);
   }
-  25%{
+  25% {
     filter: drop-shadow(2px 4px 6px #ff623b);
   }
-  50%{
-    filter: drop-shadow(2px 4px 6px #ff7553);;
+  50% {
+    filter: drop-shadow(2px 4px 6px #ff7553);
   }
-65%{
-  filter: drop-shadow(2px 4px 6px #ff8465);
+  65% {
+    filter: drop-shadow(2px 4px 6px #ff8465);
   }
-  75%{
+  75% {
     filter: drop-shadow(2px 4px 6px #ff957b);
   }
-  100%{
+  100% {
     filter: drop-shadow(2px 4px 6px #ff3300);
   }
 }
-
-
 
 .kitten.gone img {
   filter: drop-shadow(2px 4px 6px #ff0000) contrast(0);
 }
-.goneCard{ 
- 
-  animation: goneFilter  1s ease-in 1;
+.goneCard {
+  animation: goneFilter 1s ease-in 1;
   /* this pauses the animation at the end properly change. */
   animation-fill-mode: forwards;
-
-
 }
-@keyframes goneFilter{
-  0%{
+@keyframes goneFilter {
+  0% {
     transition: all 1s ease;
-    filter:grayscale(0%)
+    filter: grayscale(0%);
   }
- 
-  100%{
-    transition: all .2s ease;
-    filter: grayscale(100%)  
+
+  100% {
+    transition: all 0.2s ease;
+    filter: grayscale(100%);
   }
 }
-
 
 .kitten.gone {
   color: var(--danger);
@@ -379,8 +359,7 @@ button.btn-special:hover {
 }
 
 .btn-cancel {
-  
-font-size: 20pt;
+  font-size: 20pt;
   background-color: transparent;
   color: #08010c;
   box-shadow: none;
@@ -390,12 +369,9 @@ font-size: 20pt;
   background-color: transparent;
   box-shadow: none;
   transform: scale(1.05);
-  
-  
 }
 .btn-cancel:after {
- content: "Remove";
- 
+  content: "Remove";
 }
 
 .text-danger {

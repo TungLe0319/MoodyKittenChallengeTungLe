@@ -5,7 +5,7 @@ let affection = 5;
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
 //NOTE persists mood/img through page reload
-
+setKittenMood(kitten);
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -71,8 +71,8 @@ function drawKittens() {
   let kittenTemplate = "";
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div id="card2" class="container cardEmo m-2 p-2 text-center  position-relative ${kitten.mood}Card ">
-    <div id="catImage" class=" kitten ${kitten.mood} " >
+    <div id="card2" class=" container cardEmo m-2 p-2 text-center  position-relative ${kitten.mood}Card w-75">
+    <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
     <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-50 ">
     </div>
     
@@ -92,7 +92,7 @@ function drawKittens() {
   
     <div class="position-absolute bottom-0 end-0">
     <button id="clearButton" type="button" class="btn-cancel m-3 " onclick="clearKittens('${kitten.id}')">
-    <i id="arrowRight" class="fa-solid fa-arrow-right fa-2xl heart hidden text-light"> </i>
+    <i id="arrowRight" class="fa-solid fa-arrow-right fa-2xl heart  text-light hidden "> </i>
     <i class="fa-solid fa-shield-cat fa-2xl"></i>
     </button>
     </div>
@@ -194,6 +194,7 @@ function catnip(id) {
 
 /**
  * Sets the kittens mood based on its affection
+ * NOTE i messed up assuming i should've switched the param kitten to id instead,broke the buttons properly affecting the correct kitten. next time just go with what is given to me before changing code.
  * @param {Kitten} kitten
  */
 function setKittenMood(kitten) {
@@ -209,10 +210,10 @@ function setKittenMood(kitten) {
   }
   if (kitten.affection == 0) {
     kitten.mood = "gone";
-    document.getElementById("arrowRight").classList.toggle("hidden");
+    // document.getElementById("arrowRight").classList.toggle("hidden");
   }
-  document.getElementById("catImage").classList.add(kitten.mood);
-  document.getElementById("card2").classList.add(kitten.mood);
+  document.getElementById("catImage").className += kitten.mood;
+  document.getElementById("card2").className += kitten.mood;
   saveKittens();
 
   // let currentKitten = findKittenById(id);
@@ -246,28 +247,6 @@ function setKittenMood(kitten) {
   //   document.getElementById("card2").className += "goneCard";
   //   document.getElementById("arrowRight").classList.toggle("hidden");
   //   kitten.mood = "Gone FOREVER";
-  // }
-
-  // switch (currentKitten.affection) {
-  //   case 9:
-  //     document.getElementById("catImage").className += "kitten happy";
-  //    currentKitten.mood="Happy"
-  //     break;
-
-  //   case 5:
-  //     document.getElementById("catImage").className += "kitten ";
-  //     currentKitten.mood = "Tolerant";
-  //     break;
-
-  //   case 3:
-  //     document.getElementById("catImage").className += "kitten angry";
-  //     currentKitten.mood = "Angry";
-  //     break;
-
-  //   case 0:
-  //     document.getElementById("catImage").className += "kitten gone";
-  //     currentKitten.mood = "Gone";
-  //     break;
   // }
 }
 
