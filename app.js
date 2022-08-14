@@ -1,6 +1,6 @@
 let kittens = [];
 let kitten = {};
-let mood = "";
+let mood = '';
 let affection = 5;
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
@@ -24,7 +24,7 @@ function addKitten(event) {
     let kitten = {
       id: generateId(),
       name: form.name.value,
-      mood: "Tolerant",
+      mood: 'Tolerant',
       affection: 5,
     };
     kittens.push(kitten);
@@ -44,7 +44,7 @@ function addKitten(event) {
  * Saves the string to localstorage at the key kittens
  */
 function saveKittens() {
-  window.localStorage.setItem("Kittens", JSON.stringify(kittens));
+  window.localStorage.setItem('Kittens', JSON.stringify(kittens));
   drawKittens();
 }
 
@@ -54,7 +54,7 @@ function saveKittens() {
  * the kittens array to the retrieved array
  */
 function loadKittens() {
-  let storedKittens = JSON.parse(window.localStorage.getItem("Kittens"));
+  let storedKittens = JSON.parse(window.localStorage.getItem('Kittens'));
   if (storedKittens) {
     kittens = storedKittens;
   }
@@ -67,13 +67,13 @@ function loadKittens() {
 //  * NOTE clearbutton div I want to somehow get it to stay at the bottom right corner of the container
  */
 function drawKittens() {
-  let kittenCard = document.getElementById("kittens");
-  let kittenTemplate = "";
+  let kittenCard = document.getElementById('kittens');
+  let kittenTemplate = '';
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div id="card2" class=" container cardEmo m-2 p-2 text-center  position-relative ${kitten.mood}Card w-75">
+    <div id="card2" class=" container cardEmo m-2 p-2 text-center  position-relative ${kitten.mood}Card w-75 ">
     <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
-    <img src="/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-50 ">
+    <img src="/moody-kittens-Tung/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-50 ">
     </div>
     
 
@@ -90,10 +90,10 @@ function drawKittens() {
    </div>
 
   
-    <div class="position-absolute bottom-0 end-0">
-    <button id="clearButton" type="button" class="btn-cancel m-3 " onclick="clearKittens('${kitten.id}')">
+    <div class="position-absolute bottom-0 end-0 ">
+    <button id="clearButton" type="button" class="btn-cancel m-1 " onclick="clearKittens('${kitten.id}')">
     <i id="arrowRight" class="fa-solid fa-arrow-right fa-2xl heart  text-light hidden "> </i>
-    <i class="fa-solid fa-shield-cat fa-2xl"></i>
+    <i class="fa-solid fa-shield-cat fa-xl"></i>
     </button>
     </div>
     </div>
@@ -125,11 +125,12 @@ function pet(id) {
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
 
+  //Caps button at 10
   if (currentKitten.affection == 10) {
     return;
   }
 
-  // stops pet function once it hits 0
+  // Caps button at 0
   if (currentKitten.affection == 0) {
     return;
   }
@@ -158,11 +159,12 @@ function feed(id) {
   let currentKitten = findKittenById(id);
   let rNum = Math.random();
 
+  //Caps button at 0
   if (currentKitten.affection == 10) {
     return;
   }
 
-  // stops pet function once it hits 0
+  //Caps button at 0
   if (currentKitten.affection == 0) {
     return;
   }
@@ -188,7 +190,7 @@ function feed(id) {
 function catnip(id) {
   let currentKitten = findKittenById(id);
   currentKitten.affection = 5;
-  currentKitten.mood = "Tolerant";
+  currentKitten.mood = 'Tolerant';
   saveKittens();
 }
 
@@ -198,22 +200,22 @@ function catnip(id) {
  * @param {Kitten} kitten
  */
 function setKittenMood(kitten) {
-  document.getElementById("catImage").classList.remove(kitten.mood);
+  document.getElementById('catImage').classList.remove(kitten.mood);
   if (kitten.affection >= 10) {
-    kitten.mood = "happy";
+    kitten.mood = 'happy';
   }
   if (kitten.affection == 5) {
-    kitten.mood = "tolerant";
+    kitten.mood = 'tolerant';
   }
   if (kitten.affection <= 3) {
-    kitten.mood = "angry";
+    kitten.mood = 'angry';
   }
   if (kitten.affection == 0) {
-    kitten.mood = "gone";
+    kitten.mood = 'gone';
     // document.getElementById("arrowRight").classList.toggle("hidden");
   }
-  document.getElementById("catImage").className += kitten.mood;
-  document.getElementById("card2").className += kitten.mood;
+  document.getElementById('catImage').classList.add(kitten.mood);
+  document.getElementById('card2').className += kitten.mood;
   saveKittens();
 
   // let currentKitten = findKittenById(id);
@@ -267,8 +269,8 @@ function clearKittens(id) {
  * list of kittens to the page. Good Luck
  */
 function getStarted() {
-  document.getElementById("welcome").remove();
-  console.log("Good Luck, Take it away");
+  document.getElementById('welcome').remove();
+  console.log('Good Luck, Take it away');
 }
 
 // --------------------------------------------- No Changes below this line are needed
@@ -286,7 +288,7 @@ function getStarted() {
 function generateId() {
   return (
     Math.floor(Math.random() * 10000000) +
-    "-" +
+    '-' +
     Math.floor(Math.random() * 10000000)
   );
 }
