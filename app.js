@@ -37,6 +37,7 @@ function addKitten(event) {
   saveKittens();
   form.reset();
   drawKittens();
+  console.log(currentKitten);
 }
 
 /**
@@ -71,27 +72,27 @@ function drawKittens() {
   let kittenTemplate = '';
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div id="card2" class=" container cardEmo m-2 p-2 text-center  position-relative ${kitten.mood}Card w-75 ">
+    <div id="card2" class=" container cardEmo m-3 p-2 text-center  position-relative ${kitten.mood}Card w-50 ">
     <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
-    <img src="/moody-kittens-Tung/resources/pngaaa.com-2850009.png" alt="" class="m-4 w-50 ">
+    <img src="/resources/pngaaa.com-2850009.png" alt="CatIMAGE" class="m-3 w-50 ">
     </div>
     
 
-    <div class=" m-5 d-md-block interactButtons ">
-    <button id="feedBtn" class=" m-2 btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Annoy</button>
+    <div class="  d-md-block interactButtons ">
+    <button id="feedBtn" class="  btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Annoy</button>
     <button class=" m-2 btn btn-warning interactButton " type="button" onclick="pet('${kitten.id}')" >Pet</button>
-    <button class="m-2 btn btn-danger text-dark interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
+    <button class=" btn btn-danger text-dark interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
   </div>
-    <div id="kittenStats" class=" mt-5 mb-5 p-2 ">  
+    <div id="kittenStats" class=" m-3 pb-5 ">  
     <div class="cardName">Name: ${kitten.name}</div>
-   <div class="cardName">Mood: ${kitten.mood}</div>
+   <div class="cardName ">Mood: ${kitten.mood}</div>
    
-   <div class="cardName"> Affection: ${kitten.affection}</div>
+   <div class="cardName  "> Affection:<span class="${kitten.mood}Text"> ${kitten.affection}</span></div>
    </div>
 
   
-    <div class="position-absolute bottom-0 end-0 ">
-    <button id="clearButton" type="button" class="btn-cancel m-1 " onclick="clearKittens('${kitten.id}')">
+    <div class=" position-absolute bottom-0 end-0 ">
+    <button id="clearButton" type="button" class="btn-cancel   " onclick="clearKittens('${kitten.id}')">
     <i id="arrowRight" class="fa-solid fa-arrow-right fa-2xl heart  text-light hidden "> </i>
     <i class="fa-solid fa-shield-cat fa-xl"></i>
     </button>
@@ -217,39 +218,6 @@ function setKittenMood(kitten) {
   document.getElementById('catImage').classList.add(kitten.mood);
   document.getElementById('card2').className += kitten.mood;
   saveKittens();
-
-  // let currentKitten = findKittenById(id);
-  // if (kitten.affection >= 10) {
-  //   document.getElementById("catImage").className += "kitten happy moody";
-  //   document.getElementById("card2").className += "happyCard";
-  //   kitten.mood = "Happy";
-  // }
-  // if (kitten.affection >= 9) {
-  //   kitten.mood = "Happy";
-  // }
-
-  // if (kitten.affection == 5) {
-  //   document.getElementById("catImage").className += "kitten tolerant";
-  //   kitten.mood = "Tolerant";
-  // }
-
-  // if (kitten.affection <= 4) {
-  //   kitten.mood = "Angry";
-  // }
-  // if (kitten.affection <= 3) {
-  //   document.getElementById("catImage").className += "kitten angry moodyMad ";
-  //   document.getElementById("card2").className += "angryCard";
-  //  kitten.mood = "Angry";
-  // }
-  // if (kitten.affection <= 1) {
-  //  kitten .mood = "Gone FOREVER";
-  // }
-  // if (kitten.affection <= 0) {
-  //   document.getElementById("catImage").className += "kitten gone";
-  //   document.getElementById("card2").className += "goneCard";
-  //   document.getElementById("arrowRight").classList.toggle("hidden");
-  //   kitten.mood = "Gone FOREVER";
-  // }
 }
 
 /**
@@ -269,6 +237,8 @@ function clearKittens(id) {
  * list of kittens to the page. Good Luck
  */
 function getStarted() {
+  //NOTE toggle hidden keeps kitten card off screen while welcome card is present.
+  document.getElementById('kittens').classList.toggle('hidden');
   document.getElementById('welcome').remove();
   console.log('Good Luck, Take it away');
 }
