@@ -126,7 +126,9 @@ button.btn-special:hover {
   border-radius: 4px;
 }
 
-/* ANCHOR////////////////////////////CUSTOM ADDED CSS I IMPLEMENTED/////////////////////////////// */
+
+
+/* #region MyCode ANCHOR */
 .thumb dt:not(:first-child) {
   width: calc(100% / 4);
 }
@@ -361,7 +363,9 @@ button.btn-special:hover {
     box-shadow: none;
   }
 }
+/* #endregion */
 
+/* #region GivenCode  ANCHOR */
 .kitten.gone {
   color: var(--danger);
   pointer-events: none;
@@ -500,3 +504,4 @@ button.btn-special:hover {
 .hidden {
   display: none !important;
 }
+/* #endregion */

@@ -4,8 +4,8 @@ let mood = '';
 let affection = 5;
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
-//NOTE persists mood/img through page reload
-setKittenMood(kitten);
+
+setKittenMood(kitten);//NOTE persists mood/img through page reload
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -16,7 +16,7 @@ setKittenMood(kitten);
 function addKitten(event) {
   event.preventDefault(); //NOTE stops page refresh on name submission
   let form = event.target;
-  let kittenName = form.name.value;
+  let kittenName = form.name.value; //The Name the User is inputing.
   let currentKitten = kittens.find((kitten) => kitten.name == kittenName);
 
   // NOTE another way to write this could be an !conditional i think
@@ -83,7 +83,7 @@ function drawKittens() {
     <button class=" m-2 btn btn-warning interactButton " type="button" onclick="pet('${kitten.id}')" >Pet</button>
     <button class=" btn btn-danger text-dark interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
   </div>
-    <div id="kittenStats" class=" m-3 pb-5 ">  
+    <div id="kittenStats" class="m1 p-1  ">  
     <div class="cardName">Name: ${kitten.name}</div>
    <div class="cardName ">Mood: ${kitten.mood}</div>
    
@@ -94,7 +94,7 @@ function drawKittens() {
     <div class=" position-absolute bottom-0 end-0 ">
     <button id="clearButton" type="button" class="btn-cancel   " onclick="clearKittens('${kitten.id}')">
     <i id="arrowRight" class="fa-solid fa-arrow-right fa-2xl heart  text-light hidden "> </i>
-    <i class="fa-solid fa-shield-cat fa-xl"></i>
+    <i class="fa-solid fa-shield-cat fa-lg"></i>
     </button>
     </div>
     </div>
