@@ -21,7 +21,6 @@ function addKitten(event) {
 
   // NOTE another way to write this could be an !conditional i think
   if (!currentKitten) {
-
     if (kittens.length > 3) {
       alert(
         'Try taking care of the kittens you own first before taking on more!'
@@ -43,7 +42,6 @@ function addKitten(event) {
     return;
   }
 
- 
   saveKittens();
   form.reset();
   drawKittens();
@@ -84,15 +82,15 @@ function drawKittens() {
     kittenTemplate += `
     <div id="card2" class=" container cardEmo m-3 p-2 text-center  position-relative ${kitten.mood}Card w-25  ">
     <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
-    <img src="/resources/pngaaa.com-2850009.png" alt="CatIMAGE" class="m-3 w-50">
+    <img src="/resources/pngaaa.com-2850009.PNG" alt="CatIMAGE" class="m-3 w-50">
     </div>
     
 
     <div id="playButtons" class="  d-md-block interactButtons ">
-    <button id="feedBtn" class="  btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Annoy</button>
+    <button id="feedBtn" class="  btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Feed</button>
     <button class=" m-2 btn btn-warning interactButton " type="button" onclick="pet('${kitten.id}')" >Pet</button>
     <button class=" btn btn-danger text-dark interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
-  </div>
+    </div>
     <div id="kittenStats" class="  m-1 p-1   ">  
     <div class="cardName">Name: ${kitten.name}</div>
    <div class="cardName ">Mood: ${kitten.mood}</div>
@@ -146,16 +144,20 @@ function pet(id) {
     return;
   }
 
-  if (rNum > 0.5) {
+  if (rNum >= 0.7) {
     currentKitten.affection++;
     setKittenMood(currentKitten);
     saveKittens();
-  }
-  if (rNum < 0.5) {
-    currentKitten.affection++;
+  } else {
+    currentKitten.affection--;
     setKittenMood(currentKitten);
     saveKittens();
   }
+  // if (rNum < 0.5) {
+  //   currentKitten.affection++;
+  //   setKittenMood(currentKitten);
+  //   saveKittens();
+  // }
 }
 
 /**
@@ -180,16 +182,26 @@ function feed(id) {
     return;
   }
 
-  if (rNum > 0.5) {
+  if (rNum >= 0.5) {
+    currentKitten.affection++;
+    setKittenMood(currentKitten);
+    saveKittens();
+  } else {
     currentKitten.affection--;
     setKittenMood(currentKitten);
     saveKittens();
   }
-  if (rNum < 0.5) {
-    currentKitten.affection--;
-    setKittenMood(currentKitten);
-    saveKittens();
-  }
+
+  // if (rNum > 0.5) {
+  //   currentKitten.affection--;
+  //   setKittenMood(currentKitten);
+  //   saveKittens();
+  // }
+  // if (rNum < 0.5) {
+  //   currentKitten.affection--;
+  //   setKittenMood(currentKitten);
+  //   saveKittens();
+  // }
 }
 
 /**
@@ -233,7 +245,6 @@ function setKittenMood(kitten) {
   }
   if (kitten.affection == 0) {
     kitten.mood = 'gone';
-    // document.getElementById("arrowRight").classList.toggle("hidden");
   }
   document.getElementById('catImage').classList.add(kitten.mood);
   document.getElementById('card2').className += kitten.mood;
