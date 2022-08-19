@@ -21,6 +21,14 @@ function addKitten(event) {
 
   // NOTE another way to write this could be an !conditional i think
   if (!currentKitten) {
+
+    if (kittens.length > 3) {
+      alert(
+        'Try taking care of the kittens you own first before taking on more!'
+      );
+      return;
+    }
+
     let kitten = {
       id: generateId(),
       name: form.name.value,
@@ -35,12 +43,7 @@ function addKitten(event) {
     return;
   }
 
-  if (kittens.length >= 4) {
-    alert(
-      'Try taking care of the kittens you own first before taking on more!'
-    );
-    return;
-  }
+ 
   saveKittens();
   form.reset();
   drawKittens();
@@ -79,7 +82,7 @@ function drawKittens() {
   let kittenTemplate = '';
   kittens.forEach((kitten) => {
     kittenTemplate += `
-    <div id="card2" class=" container cardEmo m-3 p-2 text-center  position-relative ${kitten.mood}Card w-50 ">
+    <div id="card2" class=" container cardEmo m-3 p-2 text-center  position-relative ${kitten.mood}Card w-25  ">
     <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
     <img src="/resources/pngaaa.com-2850009.png" alt="CatIMAGE" class="m-3 w-50">
     </div>
@@ -196,6 +199,7 @@ function feed(id) {
  * @param {string} id
  */
 function catnip(id) {
+  let currentKitten = findKittenById(id);
   //Caps button at 10
   if (currentKitten.affection == 10) {
     return;
@@ -206,7 +210,6 @@ function catnip(id) {
     return;
   }
 
-  let currentKitten = findKittenById(id);
   currentKitten.affection = 5;
   currentKitten.mood = 'Tolerant';
   saveKittens();

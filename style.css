@@ -154,7 +154,7 @@ button.btn-special:hover {
 }
 .container {
   /* margin: 0 0.5em; */
-  min-height: 400px;
+  min-height: 560px;
 }
 
 @keyframes kittenFloat {
