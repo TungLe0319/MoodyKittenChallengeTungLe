@@ -5,7 +5,7 @@ let affection = 5;
 loadKittens();
 drawKittens(); //NOTE stops page refresh from hiding storedkittens
 
-setKittenMood(kitten);//NOTE persists mood/img through page reload
+setKittenMood(kitten); //NOTE persists mood/img through page reload
 /**
  * Called when submitting the new Kitten Form
  * This method will pull data from the form
@@ -32,6 +32,13 @@ function addKitten(event) {
   } else {
     alert("you can't have two of the same kittens at once, try another name!");
     form.reset();
+    return;
+  }
+
+  if (kittens.length >= 4) {
+    alert(
+      'Try taking care of the kittens you own first before taking on more!'
+    );
     return;
   }
   saveKittens();
@@ -74,16 +81,16 @@ function drawKittens() {
     kittenTemplate += `
     <div id="card2" class=" container cardEmo m-3 p-2 text-center  position-relative ${kitten.mood}Card w-50 ">
     <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
-    <img src="/resources/pngaaa.com-2850009.png" alt="CatIMAGE" class="m-3 w-50 ">
+    <img src="/resources/pngaaa.com-2850009.png" alt="CatIMAGE" class="m-3 w-50">
     </div>
     
 
-    <div class="  d-md-block interactButtons ">
+    <div id="playButtons" class="  d-md-block interactButtons ">
     <button id="feedBtn" class="  btn btn-info interactButton " type="button" onclick="feed('${kitten.id}')" >Annoy</button>
     <button class=" m-2 btn btn-warning interactButton " type="button" onclick="pet('${kitten.id}')" >Pet</button>
     <button class=" btn btn-danger text-dark interactButton " type="button" onclick="catnip('${kitten.id}') ">Catnip</button>
   </div>
-    <div id="kittenStats" class="m1 p-1  ">  
+    <div id="kittenStats" class="  m-1 p-1   ">  
     <div class="cardName">Name: ${kitten.name}</div>
    <div class="cardName ">Mood: ${kitten.mood}</div>
    
@@ -189,6 +196,16 @@ function feed(id) {
  * @param {string} id
  */
 function catnip(id) {
+  //Caps button at 10
+  if (currentKitten.affection == 10) {
+    return;
+  }
+
+  //Caps button at 0
+  if (currentKitten.affection == 0) {
+    return;
+  }
+
   let currentKitten = findKittenById(id);
   currentKitten.affection = 5;
   currentKitten.mood = 'Tolerant';
