@@ -21,7 +21,7 @@ function addKitten(event) {
 
   // NOTE another way to write this could be an !conditional i think
   if (!currentKitten) {
-    if (kittens.length > 3) {
+    if (kittens.length >= 4) {
       alert(
         'Try taking care of the kittens you own first before taking on more!'
       );
@@ -82,7 +82,7 @@ function drawKittens() {
     kittenTemplate += `
     <div id="card2" class=" container cardEmo m-3 p-2 text-center  position-relative ${kitten.mood}Card w-25  ">
     <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
-    <img src="pngaaa.com-2850009.png" alt="CatIMAGE" class="m-3 w-50">
+    <img src="grumpy.png" alt="CatIMAGE" class="m-3 w-50">
     </div>
     
 
@@ -101,7 +101,7 @@ function drawKittens() {
   
     <div class=" position-absolute bottom-0 end-0 ">
     <button id="clearButton" type="button" class="btn-cancel   " onclick="clearKittens('${kitten.id}')">
-    <i id="arrowRight" class="fa-solid fa-arrow-right fa-2xl heart  text-light hidden "> </i>
+  
     <i class="fa-solid fa-shield-cat fa-lg"></i>
     </button>
     </div>
@@ -145,11 +145,11 @@ function pet(id) {
   }
 
   if (rNum >= 0.7) {
-    currentKitten.affection++;
+    currentKitten.affection--;
     setKittenMood(currentKitten);
     saveKittens();
   } else {
-    currentKitten.affection--;
+    currentKitten.affection++;
     setKittenMood(currentKitten);
     saveKittens();
   }
@@ -182,7 +182,7 @@ function feed(id) {
     return;
   }
 
-  if (rNum >= 0.5) {
+  if (rNum >= 0.7) {
     currentKitten.affection++;
     setKittenMood(currentKitten);
     saveKittens();
@@ -268,10 +268,11 @@ function clearKittens(id) {
  * list of kittens to the page. Good Luck
  */
 function getStarted() {
-  //NOTE toggle hidden keeps kitten card off screen while welcome card is present.
-  document.getElementById('kittens').classList.toggle('hidden');
   document.getElementById('welcome').remove();
-  console.log('Good Luck, Take it away');
+  document.getElementById('nameInput').classList.remove('hidden');
+  document.getElementById('kittens').classList.toggle('hidden');
+  loadKittens();
+  drawKittens();
 }
 
 // --------------------------------------------- No Changes below this line are needed

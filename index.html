@@ -43,7 +43,7 @@
     </form> -->
 
       <form class=" " onsubmit="addKitten(event)">
-        <div class="d-flex mt-2">
+        <div id="nameInput" class="d-flex mt-2 hidden">
           <input
             type="text"
             class="form-control"
@@ -61,7 +61,7 @@
 
     <main id="mainBody" class="mt-3 p-3">
       <!-- NOTE adding hidden hides the welcome card -->
-      <div id="welcome" class="d-flex justify-content-center hidden">
+      <div id="welcome" class="d-flex justify-content-center">
         <!-- NOTE align-items-center here fixes kitten img -->
         <div class="card p-2 text-center align-items-center">
           <img src="moody-logo.png" height="250" alt="Moody Kittens" />
@@ -70,9 +70,9 @@
             <p>
               Experience the Joys, Frustrations and Sorrows of owning a Kitten
             </p>
-            <small>Good Luck and Have Fun!</small>
+            <small>Start Fresh or Continue on with your kittens!</small>
             <br />
-            <button onclick="getStarted()">Get Started</button>
+            <button onclick="getStarted()">Load Kittens</button>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@
       <!-- NOTE div that contains new kitten added -->
       <div
         id="kittens"
-        class="bg-transparent d-flex text-center justify-content-center mb-5 pb-3 "
+        class="bg-transparent d-flex text-center justify-content-center mb-5 pb-3 hidden"
       ></div>
     </main>
     <footer class="bg-dark text-light text-center p-2 fixed-bottom">

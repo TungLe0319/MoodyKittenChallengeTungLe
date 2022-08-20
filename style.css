@@ -280,6 +280,7 @@ button.btn-special:hover {
 .kitten.happy img {
   filter: drop-shadow(2px 4px 6px #00ffb3);
 }
+
 .happyCard {
   animation: happyFilter 5s infinite;
 }
@@ -398,7 +399,7 @@ button.btn-special:hover {
   transform: scale(1.05);
 }
 .btn-cancel:after {
-  content: 'Remove';
+  content: 'Abandon';
 }
 
 .text-danger {
