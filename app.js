@@ -82,7 +82,7 @@ function drawKittens() {
     kittenTemplate += `
     <div id="card2" class=" container cardEmo m-3 p-2 text-center  position-relative ${kitten.mood}Card w-25  ">
     <div id="catImage" class=" kitten ${kitten.mood}  ${kitten.mood}Mood" >
-    <img src="grumpy.png" alt="CatIMAGE" class="m-3 w-50">
+    <img src="./resources/grumpy.png" alt="CatIMAGE" class="m-3 w-50">
     </div>
     
 

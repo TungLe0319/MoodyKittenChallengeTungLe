@@ -17,7 +17,7 @@
 }
 
 body {
-  background: url(bg_bggenerator_com.png);
+  background: url(./resources/bg_bggenerator_com.png);
   background-size: cover;
 
   font-size: 16pt;
