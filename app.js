@@ -23,8 +23,9 @@ function addKitten(event) {
   if (!currentKitten) {
     if (kittens.length >= 4) {
       alert(
-        'Try taking care of the kittens you own first before taking on more!'
+        'Try taking care of the kittens you have first before taking on more!'
       );
+      form.reset();
       return;
     }
 
@@ -45,7 +46,7 @@ function addKitten(event) {
   saveKittens();
   form.reset();
   drawKittens();
-  console.log(currentKitten);
+  console.log(kittens);
 }
 
 /**
@@ -212,10 +213,6 @@ function feed(id) {
  */
 function catnip(id) {
   let currentKitten = findKittenById(id);
-  //Caps button at 10
-  if (currentKitten.affection == 10) {
-    return;
-  }
 
   //Caps button at 0
   if (currentKitten.affection == 0) {
