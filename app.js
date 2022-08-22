@@ -101,7 +101,7 @@ function drawKittens() {
 
   
     <div class=" position-absolute bottom-0 end-0 ">
-    <button id="clearButton" type="button" class="btn-cancel   " onclick="clearKittens('${kitten.id}')">
+    <button id="clearButton" type="button" class="btn-cancel" onclick="clearKittens('${kitten.id}')">
   
     <i class="fa-solid fa-shield-cat fa-lg"></i>
     </button>
